@@ -1,0 +1,68 @@
+{
+  "name": "auto",
+  "base": "PersistedModel",
+  "idInjection": true,
+  "options": {
+    "validateUpsert": true
+  },
+  "properties": {
+    "trademark": {
+      "type": "string"
+    },
+    "type": {
+      "type": "string"
+    },
+    "model": {
+      "type": "string"
+    },
+    "plate": {
+      "type": "string"
+    },
+    "km": {
+      "type": "number"
+    },
+    "year": {
+      "type": "number"
+    },
+    "numberMotor": {
+      "type": "number"
+    },
+    "numberChasis": {
+      "type": "number"
+    },
+    "color": {
+      "type": "string"
+    },
+    "soat": {
+      "type": "number"
+    },
+    "soatName": {
+      "type": "string"
+    },
+    "state": {
+      "type": "number"
+    }
+  },
+  "validations": [],
+  "relations": {
+    "autoChofer": {
+      "type": "belongsTo",
+      "model": "auto_chofer",
+      "foreignKey": ""
+    },
+    "company": {
+      "type": "belongsTo",
+      "model": "company",
+      "foreignKey": ""
+    }
+  },
+  "acls": [
+    {
+      "accessType": "*",
+      "principalType": "ROLE",
+      "principalId": "admin",
+      "permission": "ALLOW"
+    }
+  ],
+  "methods": {}
+}

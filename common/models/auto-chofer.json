@@ -1,0 +1,65 @@
+{
+  "name": "auto_chofer",
+  "base": "User",
+  "strict": true,
+  "idInjection": true,
+  "options": {
+    "validateUpsert": true
+  },
+  "properties": {
+    "name": {
+      "type": "string"
+    },
+    "lastname": {
+      "type": "string"
+    },
+    "phone": {
+      "type": "string"
+    },
+    "dni": {
+      "type": "string"
+    },
+    "picture": {
+      "type": "string"
+    },
+    "roleName": {
+      "type": "string",
+      "required": true,
+      "default": "empresa"
+    },
+    "born": {
+      "type": "date",
+      "required": true
+    },
+    "licence": {
+      "type": "string"
+    }
+  },
+  "validations": [],
+  "relations": {
+    "autos": {
+      "type": "hasMany",
+      "model": "auto",
+      "foreignKey": ""
+    },
+    "companies": {
+      "type": "belongsTo",
+      "model": "company",
+      "foreignKey": ""
+    },
+    "travels": {
+      "type": "hasMany",
+      "model": "travel",
+      "foreignKey": ""
+    }
+  },
+  "acls": [
+    {
+      "accessType": "*",
+      "principalType": "ROLE",
+      "principalId": "admin",
+      "permission": "ALLOW"
+    }
+  ],
+  "methods": {}
+}

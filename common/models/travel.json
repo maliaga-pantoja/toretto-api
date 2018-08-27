@@ -6,31 +6,27 @@
     "validateUpsert": true
   },
   "properties": {
+    "contact": {
+      "type": "string"
+    },
     "description": {
       "type": "string"
     },
-    "notes": {
-      "type": "string"
+    "comments": {
+      "type": [
+        "string"
+      ]
     },
-    "contact": {
-      "type": "string"
+    "created_at": {
+      "type":"date",
+      "defaultFn": "now"
     }
   },
   "validations": [],
   "relations": {
-    "rides": {
-      "type": "hasMany",
-      "model": "ride",
-      "foreignKey": ""
-    },
-    "autoChofer": {
+    "member": {
       "type": "belongsTo",
-      "model": "auto_chofer",
-      "foreignKey": ""
-    },
-    "company": {
-      "type": "belongsTo",
-      "model": "company",
+      "model": "member",
       "foreignKey": ""
     }
   },
@@ -38,7 +34,7 @@
     {
       "accessType": "*",
       "principalType": "ROLE",
-      "principalId": "admin",
+      "principalId": "$authenticated",
       "permission": "ALLOW"
     }
   ],

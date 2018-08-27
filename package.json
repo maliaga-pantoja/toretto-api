@@ -1,5 +1,5 @@
 {
-  "name": "autos-master-v2",
+  "name": "autos-master-v3",
   "version": "1.0.0",
   "main": "server/server.js",
   "engines": {
@@ -31,5 +31,5 @@
     "url": ""
   },
   "license": "UNLICENSED",
-  "description": "autos-master-v2"
+  "description": "autos-master-v3"
 }

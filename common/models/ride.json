@@ -9,26 +9,26 @@
     "address": {
       "type": "string"
     },
-    "district": {
-      "type": "string"
-    },
-    "activity": {
-      "type": "string"
-    },
-    "start_at": {
-      "type": "date"
-    },
-    "end_at": {
-      "type": "date"
-    },
     "customer": {
       "type": "object"
     },
-    "starting_at": {
+    "district": {
+      "type": "string"
+    },
+    "comments": {
+      "type": [
+        "string"
+      ]
+    },
+    "started_at": {
       "type": "date"
     },
-    "observation": {
-      "type": "string"
+    "ended_at": {
+      "type": "date"
+    },
+    "created_at": {
+      "type":"date",
+      "defaultFn": "now"
     }
   },
   "validations": [],
@@ -38,14 +38,9 @@
       "model": "travel",
       "foreignKey": ""
     },
-    "autoChofer": {
+    "member": {
       "type": "belongsTo",
-      "model": "auto_chofer",
-      "foreignKey": ""
-    },
-    "company": {
-      "type": "belongsTo",
-      "model": "company",
+      "model": "member",
       "foreignKey": ""
     }
   },
@@ -53,7 +48,7 @@
     {
       "accessType": "*",
       "principalType": "ROLE",
-      "principalId": "admin",
+      "principalId": "$authenticated",
       "permission": "ALLOW"
     }
   ],

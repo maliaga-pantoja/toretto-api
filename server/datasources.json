@@ -3,7 +3,7 @@
     "name": "db",
     "connector": "memory"
   },
-  "mongodb": {
+  "mongo": {
     "host": "${DB_HOST}",
     "port": "${DB_PORT}",
     "url": "${DB_URL}",

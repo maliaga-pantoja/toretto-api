@@ -14,58 +14,50 @@
     ]
   },
   "User": {
-    "dataSource": "mongodb",
+    "dataSource": "mongo",
     "public": false
   },
   "AccessToken": {
-    "dataSource": "mongodb",
+    "dataSource": "mongo",
     "public": false
   },
   "ACL": {
-    "dataSource": "mongodb",
+    "dataSource": "mongo",
     "public": false
   },
   "RoleMapping": {
-    "dataSource": "mongodb",
+    "dataSource": "mongo",
     "public": false,
     "options": {
       "strictObjectIDCoercion": true
     }
   },
   "Role": {
-    "dataSource": "mongodb",
+    "dataSource": "mongo",
     "public": false
   },
-  "auto": {
-    "dataSource": "mongodb",
-    "public": true
-  },
   "company": {
-    "dataSource": "mongodb",
-    "public": true
-  },
-  "company_contact": {
-    "dataSource": "mongodb",
-    "public": true
-  },
-  "auto_chofer": {
-    "dataSource": "mongodb",
-    "public": true
-  },
-  "super": {
-    "dataSource": "mongodb",
-    "public": true
-  },
-  "travel": {
-    "dataSource": "mongodb",
-    "public": true
-  },
-  "ride": {
-    "dataSource": "mongodb",
+    "dataSource": "mongo",
     "public": true
   },
   "event": {
-    "dataSource": "mongodb",
+    "dataSource": "mongo",
+    "public": true
+  },
+  "member": {
+    "dataSource": "mongo",
+    "public": true
+  },
+  "ride": {
+    "dataSource": "mongo",
+    "public": true
+  },
+  "travel": {
+    "dataSource": "mongo",
+    "public": true
+  },
+  "vehicle": {
+    "dataSource": "mongo",
     "public": true
   }
 }

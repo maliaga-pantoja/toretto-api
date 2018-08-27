@@ -1,36 +1,27 @@
 {
-  "name": "auto",
+  "name": "vehicle",
   "base": "PersistedModel",
   "idInjection": true,
   "options": {
     "validateUpsert": true
   },
   "properties": {
-    "trademark": {
-      "type": "string"
-    },
-    "type": {
-      "type": "string"
-    },
-    "model": {
-      "type": "string"
-    },
-    "plate": {
+    "color": {
       "type": "string"
     },
     "km": {
       "type": "number"
     },
-    "year": {
+    "model": {
+      "type": "string"
+    },
+    "numberChasis": {
       "type": "number"
     },
     "numberMotor": {
       "type": "number"
     },
-    "numberChasis": {
-      "type": "number"
-    },
-    "color": {
+    "plate": {
       "type": "string"
     },
     "soat": {
@@ -39,20 +30,34 @@
     "soatName": {
       "type": "string"
     },
-    "state": {
+    "tradeMark": {
+      "type": "string"
+    },
+    "type": {
+      "type": "string"
+    },
+    "year": {
       "type": "number"
+    },
+    "status": {
+      "type": "boolean",
+      "default": true
+    },
+    "created_at": {
+      "type":"date",
+      "defaultFn": "now"
     }
   },
   "validations": [],
   "relations": {
-    "autoChofer": {
-      "type": "belongsTo",
-      "model": "auto_chofer",
-      "foreignKey": ""
-    },
     "company": {
       "type": "belongsTo",
       "model": "company",
+      "foreignKey": ""
+    },
+    "member": {
+      "type": "belongsTo",
+      "model": "member",
       "foreignKey": ""
     }
   },
@@ -60,7 +65,7 @@
     {
       "accessType": "*",
       "principalType": "ROLE",
-      "principalId": "admin",
+      "principalId": "$authenticated",
       "permission": "ALLOW"
     }
   ],

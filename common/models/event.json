@@ -6,20 +6,18 @@
     "validateUpsert": true
   },
   "properties": {
-    "title": {
-      "type": "string",
-      "required": true
+    "description": {
+      "type": "string"
     },
     "location": {
-      "type": "geopoint",
-      "required": false
+      "type": "geopoint"
+    },
+    "title": {
+      "type": "string"
     },
     "created_at": {
-      "type": "date"
-    },
-    "description": {
-      "type": "string",
-      "required": false
+      "type":"date",
+      "defaultFn": "now"
     }
   },
   "validations": [],
@@ -30,6 +28,13 @@
       "foreignKey": ""
     }
   },
-  "acls": [],
+  "acls": [
+    {
+      "accessType": "*",
+      "principalType": "ROLE",
+      "principalId": "$authenticated",
+      "permission": "ALLOW"
+    }
+  ],
   "methods": {}
 }

@@ -6,20 +6,25 @@
     "validateUpsert": true
   },
   "properties": {
-    "name": {
+    "address": {
       "type": "string"
+    },
+    "register": {
+      "type": "date"
     },
     "ruc": {
       "type": "string"
     },
-    "date": {
-      "type": "date"
-    },
-    "address": {
+    "name": {
       "type": "string"
     },
-    "state": {
-      "type": "number"
+    "status": {
+      "type": "boolean",
+      "default": true
+    },
+    "created_at": {
+      "type":"date",
+      "defaultFn": "now"
     }
   },
   "validations": [],
@@ -28,7 +33,7 @@
     {
       "accessType": "*",
       "principalType": "ROLE",
-      "principalId": "admin",
+      "principalId": "$authenticated",
       "permission": "ALLOW"
     }
   ],

@@ -1,55 +1,52 @@
 {
-  "name": "auto_chofer",
+  "name": "member",
   "base": "User",
-  "strict": true,
   "idInjection": true,
   "options": {
     "validateUpsert": true
   },
   "properties": {
+    "dni": {
+      "type": "string"
+    },
+    "dob": {
+      "type": "date"
+    },
     "name": {
       "type": "string"
     },
     "lastname": {
       "type": "string"
     },
-    "phone": {
+    "licence": {
       "type": "string"
     },
-    "dni": {
+    "phone": {
       "type": "string"
     },
     "picture": {
       "type": "string"
     },
-    "roleName": {
-      "type": "string",
-      "required": true,
-      "default": "empresa"
-    },
-    "born": {
-      "type": "date",
-      "required": true
-    },
-    "licence": {
+    "role": {
       "type": "string"
+    },
+    "status": {
+      "type": "boolean",
+      "default": true
+    },
+    "job_title": {
+      "type": "string"
+    },
+    "created_at": {
+      "type":"date",
+      "defaultFn": "now"
     }
   },
   "validations": [],
   "relations": {
-    "autos": {
-      "type": "hasMany",
-      "model": "auto",
-      "foreignKey": ""
-    },
-    "companies": {
+    "company": {
       "type": "belongsTo",
       "model": "company",
-      "foreignKey": ""
-    },
-    "travels": {
-      "type": "hasMany",
-      "model": "travel",
       "foreignKey": ""
     }
   },
@@ -57,7 +54,7 @@
     {
       "accessType": "*",
       "principalType": "ROLE",
-      "principalId": "admin",
+      "principalId": "$authenticated",
       "permission": "ALLOW"
     }
   ],

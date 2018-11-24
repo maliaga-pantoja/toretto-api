@@ -59,5 +59,13 @@
   "vehicle": {
     "dataSource": "mongo",
     "public": true
+  },
+  "report": {
+    "dataSource": "mongo",
+    "public": true
+  },
+  "Image": {
+    "dataSource": "cloudinary",
+    "public": true
   }
 }

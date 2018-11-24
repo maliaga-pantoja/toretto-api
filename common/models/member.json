@@ -38,7 +38,7 @@
       "type": "string"
     },
     "created_at": {
-      "type":"date",
+      "type": "date",
       "defaultFn": "now"
     }
   },
@@ -56,6 +56,20 @@
       "principalType": "ROLE",
       "principalId": "$authenticated",
       "permission": "ALLOW"
+    },
+    {
+      "accessType": "EXECUTE",
+      "principalType": "ROLE",
+      "principalId": "$everyone",
+      "permission": "ALLOW",
+      "property": "enabled_in_company"
+    },
+    {
+      "accessType": "EXECUTE",
+      "principalType": "ROLE",
+      "principalId": "$everyone",
+      "permission": "ALLOW",
+      "property": "photo_upload"
     }
   ],
   "methods": {}

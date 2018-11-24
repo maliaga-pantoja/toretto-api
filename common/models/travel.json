@@ -18,8 +18,12 @@
       ]
     },
     "created_at": {
-      "type":"date",
+      "type": "date",
       "defaultFn": "now"
+    },
+    "status": {
+      "type": "number",
+      "default": 0
     }
   },
   "validations": [],
@@ -27,6 +31,11 @@
     "member": {
       "type": "belongsTo",
       "model": "member",
+      "foreignKey": ""
+    },
+    "company": {
+      "type": "belongsTo",
+      "model": "company",
       "foreignKey": ""
     }
   },

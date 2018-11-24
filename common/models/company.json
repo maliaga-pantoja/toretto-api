@@ -23,7 +23,7 @@
       "default": true
     },
     "created_at": {
-      "type":"date",
+      "type": "date",
       "defaultFn": "now"
     }
   },

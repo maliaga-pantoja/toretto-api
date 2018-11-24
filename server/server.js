@@ -4,6 +4,7 @@ var loopback = require('loopback');
 var boot = require('loopback-boot');
 
 var app = module.exports = loopback();
+const cloudinary = require('cloudinary');
 
 app.start = function() {
   // start the web server
@@ -17,6 +18,25 @@ app.start = function() {
     }
   });
 };
+
+app.use(loopback.token());
+app.use((req, res, next) => {
+  if (! req.accessToken) return next();
+  req.currentUser = req.accessToken.userId;
+  next();
+});
+
+/*
+app.use((req, res, next) => {
+  cloudinary.config({
+    cloud_name: 'wyracocha-com',
+    api_key: '676746722912316',
+    api_secret: 'izCtQPt-LkHFpo8aopY6OVtkcyQ'
+  });
+  req.cloudinary = cloudinary;
+  next();
+});
+*/
 
 // Bootstrap the application, configure models, datasources and middleware.
 // Sub-apps like REST API are mounted via boot scripts.

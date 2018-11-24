@@ -11,11 +11,15 @@
     "posttest": "npm run lint && nsp check"
   },
   "dependencies": {
+    "@kolach/loopback-component-cloudinary": "0.0.3",
+    "body-parser": "^1.18.3",
+    "cloudinary": "^1.11.0",
     "compression": "^1.0.3",
     "cors": "^2.5.2",
     "helmet": "^3.10.0",
     "loopback": "^3.19.0",
     "loopback-boot": "^2.6.5",
+    "loopback-component-cloudinary": "^0.1.1",
     "loopback-component-explorer": "^6.0.0",
     "loopback-connector-mongodb": "^1.18.1",
     "serve-favicon": "^2.0.1",

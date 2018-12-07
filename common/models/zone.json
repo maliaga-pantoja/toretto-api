@@ -5,7 +5,7 @@
   "options": {
     "validateUpsert": true
   },
-  
+
   "properties": {
     "name": {
       "type": "string"
@@ -14,9 +14,7 @@
       "type": "string"
     },
     "nhc": {
-      "type": [
-        "string"
-      ]
+      "type": "string"
     },
     "created_at": {
       "type": "date",

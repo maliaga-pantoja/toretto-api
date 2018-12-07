@@ -56,6 +56,10 @@
     "dataSource": "mongo",
     "public": true
   },
+  "zone": {
+    "dataSource": "mongo",
+    "public": true
+  },
   "vehicle": {
     "dataSource": "mongo",
     "public": true

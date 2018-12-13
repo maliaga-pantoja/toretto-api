@@ -43,5 +43,29 @@
   "company": {
     "dataSource": "atlas",
     "public": true
+  },
+  "vehicle": {
+    "dataSource": "atlas",
+    "public": true
+  },
+  "panic": {
+    "dataSource": "atlas",
+    "public": true
+  },
+  "Destiny": {
+    "dataSource": "atlas",
+    "public": true
+  },
+  "ride": {
+    "dataSource": "atlas",
+    "public": true
+  },
+  "event": {
+    "dataSource": "atlas",
+    "public": true
+  },
+  "tracking": {
+    "dataSource": "atlas",
+    "public": true
   }
 }

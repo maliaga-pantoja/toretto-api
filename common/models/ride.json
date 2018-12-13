@@ -1,0 +1,41 @@
+{
+  "name": "ride",
+  "plural": "rides",
+  "base": "PersistedModel",
+  "idInjection": true,
+  "options": {
+    "validateUpsert": true
+  },
+  "properties": {
+    "companyId": {
+      "type": "string",
+      "required": true
+    },
+    "destinyIds": {
+      "type": [
+        "string"
+      ],
+      "required": true
+    },
+    "driverId": {
+      "type": "string",
+      "required": true
+    },
+    "passengerId": {
+      "type": "string",
+      "required": true
+    },
+    "route": {
+      "type": "string"
+    },
+    "type": {
+      "type": "string",
+      "required": true,
+      "default": "fijo"
+    }
+  },
+  "validations": [],
+  "relations": {},
+  "acls": [],
+  "methods": {}
+}

@@ -1,0 +1,47 @@
+{
+  "name": "Destiny",
+  "plural": "destinies",
+  "base": "PersistedModel",
+  "idInjection": true,
+  "options": {
+    "validateUpsert": true
+  },
+  "properties": {
+    "address": {
+      "type": "string",
+      "required": true
+    },
+    "companyId": {
+      "type": "string",
+      "required": true
+    },
+    "district": {
+      "type": "string"
+    },
+    "dni": {
+      "type": "string"
+    },
+    "dob": {
+      "type": "string"
+    },
+    "nhc": {
+      "type": "string"
+    },
+    "patientName": {
+      "type": "string"
+    },
+    "phone": {
+      "type": "string"
+    },
+    "zone": {
+      "type": "string"
+    },
+    "location": {
+      "type": "geopoint"
+    }
+  },
+  "validations": [],
+  "relations": {},
+  "acls": [],
+  "methods": {}
+}

@@ -1,5 +1,6 @@
 {
   "name": "company",
+  "plural": "companies",
   "base": "PersistedModel",
   "idInjection": true,
   "options": {
@@ -9,33 +10,30 @@
     "address": {
       "type": "string"
     },
+    "created_at": {
+      "type": "date",
+      "required": true,
+      "defaultFn": "now"
+    },
+    "name": {
+      "type": "string",
+      "required": true
+    },
     "register": {
-      "type": "date"
+      "type": "date",
+      "defaultFn": "now"
     },
     "ruc": {
       "type": "string"
     },
-    "name": {
-      "type": "string"
-    },
     "status": {
       "type": "boolean",
+      "required": true,
       "default": true
-    },
-    "created_at": {
-      "type": "date",
-      "defaultFn": "now"
     }
   },
   "validations": [],
   "relations": {},
-  "acls": [
-    {
-      "accessType": "*",
-      "principalType": "ROLE",
-      "principalId": "$authenticated",
-      "permission": "ALLOW"
-    }
-  ],
+  "acls": [],
   "methods": {}
 }

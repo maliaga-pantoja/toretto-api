@@ -14,66 +14,34 @@
     ]
   },
   "User": {
-    "dataSource": "mongo",
+    "dataSource": "atlas",
     "public": false
   },
   "AccessToken": {
-    "dataSource": "mongo",
+    "dataSource": "atlas",
     "public": false
   },
   "ACL": {
-    "dataSource": "mongo",
+    "dataSource": "atlas",
     "public": false
   },
   "RoleMapping": {
-    "dataSource": "mongo",
+    "dataSource": "atlas",
     "public": false,
     "options": {
       "strictObjectIDCoercion": true
     }
   },
   "Role": {
-    "dataSource": "mongo",
+    "dataSource": "atlas",
     "public": false
   },
-  "company": {
-    "dataSource": "mongo",
-    "public": true
-  },
-  "event": {
-    "dataSource": "mongo",
-    "public": true
-  },
   "member": {
-    "dataSource": "mongo",
+    "dataSource": "atlas",
     "public": true
   },
-  "ride": {
-    "dataSource": "mongo",
-    "public": true
-  },
-  "travel": {
-    "dataSource": "mongo",
-    "public": true
-  },
-  "zone": {
-    "dataSource": "mongo",
-    "public": true
-  },
-  "vehicle": {
-    "dataSource": "mongo",
-    "public": true
-  },
-  "report": {
-    "dataSource": "mongo",
-    "public": true
-  },
-  "Image": {
-    "dataSource": "cloudinary",
-    "public": true
-  },
-  "panics": {
-    "dataSource": "mongo",
+  "company": {
+    "dataSource": "atlas",
     "public": true
   }
 }

@@ -1,41 +1,49 @@
 {
   "name": "member",
+  "plural": "members",
   "base": "User",
   "idInjection": true,
   "options": {
     "validateUpsert": true
   },
   "properties": {
+    "companyId": {
+      "type": "string",
+      "required": true
+    },
     "dni": {
       "type": "string"
     },
     "dob": {
       "type": "date"
     },
-    "name": {
+    "email": {
+      "type": "string",
+      "required": true
+    },
+    "job_title": {
       "type": "string"
     },
     "lastname": {
-      "type": "string"
+      "type": "string",
+      "required": true
     },
     "licence": {
       "type": "string"
     },
+    "name": {
+      "type": "string",
+      "required": true
+    },
     "phone": {
       "type": "string"
     },
-    "picture": {
-      "type": "string"
-    },
-    "role": {
+    "photo": {
       "type": "string"
     },
     "status": {
       "type": "boolean",
       "default": true
-    },
-    "job_title": {
-      "type": "string"
     },
     "created_at": {
       "type": "date",
@@ -43,34 +51,7 @@
     }
   },
   "validations": [],
-  "relations": {
-    "company": {
-      "type": "belongsTo",
-      "model": "company",
-      "foreignKey": ""
-    }
-  },
-  "acls": [
-    {
-      "accessType": "*",
-      "principalType": "ROLE",
-      "principalId": "$authenticated",
-      "permission": "ALLOW"
-    },
-    {
-      "accessType": "EXECUTE",
-      "principalType": "ROLE",
-      "principalId": "$everyone",
-      "permission": "ALLOW",
-      "property": "enabled_in_company"
-    },
-    {
-      "accessType": "EXECUTE",
-      "principalType": "ROLE",
-      "principalId": "$everyone",
-      "permission": "ALLOW",
-      "property": "photo_upload"
-    }
-  ],
+  "relations": {},
+  "acls": [],
   "methods": {}
 }

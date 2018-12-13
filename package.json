@@ -1,5 +1,5 @@
 {
-  "name": "autos-master-v3",
+  "name": "toreto-api",
   "version": "1.0.0",
   "main": "server/server.js",
   "engines": {
@@ -8,32 +8,27 @@
   "scripts": {
     "lint": "eslint .",
     "start": "node .",
-    "posttest": "npm run lint && nsp check"
+    "posttest": "npm run lint"
   },
   "dependencies": {
-    "@kolach/loopback-component-cloudinary": "0.0.3",
-    "body-parser": "^1.18.3",
-    "cloudinary": "^1.11.0",
     "compression": "^1.0.3",
     "cors": "^2.5.2",
     "helmet": "^3.10.0",
-    "loopback": "^3.19.0",
+    "loopback": "^3.22.0",
     "loopback-boot": "^2.6.5",
-    "loopback-component-cloudinary": "^0.1.1",
-    "loopback-component-explorer": "^6.0.0",
-    "loopback-connector-mongodb": "^1.18.1",
+    "loopback-component-explorer": "^6.2.0",
+    "loopback-connector-mongodb": "^3.9.2",
     "serve-favicon": "^2.0.1",
     "strong-error-handler": "^3.0.0"
   },
   "devDependencies": {
     "eslint": "^3.17.1",
-    "eslint-config-loopback": "^8.0.0",
-    "nsp": "^2.1.0"
+    "eslint-config-loopback": "^8.0.0"
   },
   "repository": {
     "type": "",
     "url": ""
   },
   "license": "UNLICENSED",
-  "description": "autos-master-v3"
+  "description": "toreto-api"
 }

@@ -1,0 +1,35 @@
+{
+  "name": "event",
+  "plural": "events",
+  "base": "PersistedModel",
+  "idInjection": true,
+  "options": {
+    "validateUpsert": true
+  },
+  "properties": {
+    "comments": {
+      "type": "string"
+    },
+    "created_at": {
+      "type": "date",
+      "required": true,
+      "defaultFn": "now"
+    },
+    "location": {
+      "type": "geopoint",
+      "required": true
+    },
+    "rideId": {
+      "type": "string",
+      "required": true
+    },
+    "type": {
+      "type": "string",
+      "required": true
+    }
+  },
+  "validations": [],
+  "relations": {},
+  "acls": [],
+  "methods": {}
+}

@@ -1,5 +1,5 @@
 {
-  "name": "Destiny",
+  "name": "destiny",
   "plural": "destinies",
   "base": "PersistedModel",
   "idInjection": true,

@@ -14,7 +14,8 @@
     ]
   },
   "User": {
-    "dataSource": "atlas"
+    "dataSource": "atlas",
+    "public": false
   },
   "AccessToken": {
     "dataSource": "atlas",
@@ -34,5 +35,9 @@
   "Role": {
     "dataSource": "atlas",
     "public": false
+  },
+  "member": {
+    "dataSource": "atlas",
+    "public": true
   }
 }

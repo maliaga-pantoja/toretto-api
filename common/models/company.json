@@ -1,0 +1,39 @@
+{
+  "name": "company",
+  "plural": "companies",
+  "base": "PersistedModel",
+  "idInjection": true,
+  "options": {
+    "validateUpsert": true
+  },
+  "properties": {
+    "address": {
+      "type": "string"
+    },
+    "created_at": {
+      "type": "date",
+      "required": true,
+      "defaultFn": "now"
+    },
+    "name": {
+      "type": "string",
+      "required": true
+    },
+    "register": {
+      "type": "date",
+      "defaultFn": "now"
+    },
+    "ruc": {
+      "type": "string"
+    },
+    "status": {
+      "type": "boolean",
+      "required": true,
+      "default": true
+    }
+  },
+  "validations": [],
+  "relations": {},
+  "acls": [],
+  "methods": {}
+}

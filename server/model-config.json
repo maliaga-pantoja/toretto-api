@@ -14,25 +14,25 @@
     ]
   },
   "User": {
-    "dataSource": "db"
+    "dataSource": "atlas"
   },
   "AccessToken": {
-    "dataSource": "db",
+    "dataSource": "atlas",
     "public": false
   },
   "ACL": {
-    "dataSource": "db",
+    "dataSource": "atlas",
     "public": false
   },
   "RoleMapping": {
-    "dataSource": "db",
+    "dataSource": "atlas",
     "public": false,
     "options": {
       "strictObjectIDCoercion": true
     }
   },
   "Role": {
-    "dataSource": "db",
+    "dataSource": "atlas",
     "public": false
   }
 }

@@ -1,6 +1,8 @@
 {
-  "db": {
-    "name": "db",
-    "connector": "memory"
+  "atlas": {
+    "url": "mongodb+srv://toreto_usr:AscujYywZUhmqNWU@toreto-r8gtk.mongodb.net/test?retryWrites=true",
+    "name": "atlas",
+    "connector": "mongodb",
+    "useNewUrlParser": "true"
   }
 }

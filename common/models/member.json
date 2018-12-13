@@ -43,8 +43,11 @@
     },
     "status": {
       "type": "boolean",
-      "required": true,
       "default": true
+    },
+    "created_at": {
+      "type": "date",
+      "defaultFn": "now"
     }
   },
   "validations": [],

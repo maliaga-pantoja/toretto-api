@@ -1,5 +1,3 @@
 'use strict';
 
-module.exports = function(Destiny) {
-
-};
+module.exports = Destiny => {};

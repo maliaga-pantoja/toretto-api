@@ -1,6 +1,40 @@
 'use strict';
 
 module.exports = function(Member) {
+  Member.afterRemote('login', (ctx, result, next) => {
+    const RoleMapping = Member.app.models.RoleMapping;
+    const Role = Member.app.models.Role;
+    const Vehicle = Member.app.models.Vehicle;
+
+    Member.findById(result.userId, (err, member) => {
+      RoleMapping.find(
+        {
+          where: {
+            principalId: result.userId,
+          },
+        },
+        (err, mapping) => {
+          Role.findById(mapping[0].roleId, (err, role) => {
+            Vehicle.find(
+              {
+                where: {
+                  driverId: result.userId,
+                },
+              },
+              (err, vehicle) => {
+                result.role = role.name;
+                result.driver = member;
+                result.vehicle = vehicle;
+
+                next();
+              }
+            );
+          });
+        }
+      );
+    });
+  });
+
   Member.getRides = (id, cb) => {
     const Rides = Member.app.models.ride;
     const Company = Member.app.models.company;
@@ -107,7 +141,7 @@ module.exports = function(Member) {
   };
 
   Member.remoteMethod('getRides', {
-    description: 'Get driver rides',
+    description: 'Get driver rides.',
     http: {
       path: '/:id/rides',
       verb: 'get',

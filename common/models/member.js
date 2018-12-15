@@ -23,7 +23,7 @@ module.exports = function(Member) {
               },
               (err, vehicle) => {
                 result.role = role.name;
-                result.driver = member;
+                result.member = member;
                 result.vehicle = vehicle;
 
                 next();

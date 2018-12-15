@@ -17,6 +17,10 @@
       "required": true,
       "defaultFn": "now"
     },
+    "date": {
+      "type": "date",
+      "required": true
+    },
     "destinyIds": {
       "type": ["string"],
       "required": true

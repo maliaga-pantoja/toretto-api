@@ -12,6 +12,11 @@
       "type": "string",
       "required": true
     },
+    "created_at": {
+      "type": "date",
+      "required": true,
+      "defaultFn": "now"
+    },
     "dni": {
       "type": "string"
     },
@@ -45,11 +50,6 @@
     "status": {
       "type": "boolean",
       "default": true
-    },
-    "created_at": {
-      "type": "date",
-      "required": true,
-      "defaultFn": "now"
     }
   },
   "validations": [],

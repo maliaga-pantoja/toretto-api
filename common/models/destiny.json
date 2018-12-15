@@ -16,6 +16,11 @@
       "type": "string",
       "required": true
     },
+    "created_at": {
+      "type": "date",
+      "required": true,
+      "defaultFn": "now"
+    },
     "district": {
       "type": "string"
     },

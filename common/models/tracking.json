@@ -12,6 +12,11 @@
       "type": "string",
       "required": true
     },
+    "created_at": {
+      "type": "date",
+      "required": true,
+      "defaultFn": "now"
+    },
     "driverId": {
       "type": "string",
       "required": true

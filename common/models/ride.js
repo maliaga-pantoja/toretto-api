@@ -1,15 +1,46 @@
 'use strict';
 
 module.exports = Ride => {
-  Ride.afterRemote('find', (ctx, ride, next) => {
+  Ride.afterRemote('find', (ctx, rides, next) => {
+    const Member = Ride.app.models.member;
     const Company = Ride.app.models.company;
+    const Destiny = Ride.app.models.destiny;
 
-    ride.forEach((v, index) => {
-      Company.findById(v.companyId, (err, company) => {
-        v.company = company;
-        if (index === ride.length - 1) {
-          next();
-        }
+    rides.forEach((ride, index) => {
+      Member.find({}, (err, members) => {
+        Company.findById(ride.companyId, (err, company) => {
+          Destiny.find(
+            {
+              where: {
+                id: {
+                  inq: ride.destinyIds,
+                },
+              },
+            },
+            (err, destinies) => {
+              ride.driver = members.find(
+                member => String(member.id) === ride.driverId
+              );
+
+              ride.passenger = members.find(
+                member => String(member.id) === ride.passengerId
+              );
+
+              ride.company = company;
+
+              const destiniesFound = [];
+              destinies.forEach(destiny => {
+                destiniesFound.push(destiny);
+              });
+
+              ride.destinies = destiniesFound;
+
+              if (index === rides.length - 1) {
+                next();
+              }
+            }
+          );
+        });
       });
     });
   });
@@ -32,8 +63,8 @@ module.exports = Ride => {
             },
             (err, destinies) => {
               const destiniesFound = [];
-              destinies.forEach(d => {
-                destiniesFound.push(d);
+              destinies.forEach(destiny => {
+                destiniesFound.push(destiny);
               });
               ride.driver = driver;
               ride.company = company;
@@ -44,10 +75,6 @@ module.exports = Ride => {
           );
         });
       });
-    });
-
-    Company.findById(ride.companyId, (err, company) => {
-      ride.company = company;
     });
   });
 };

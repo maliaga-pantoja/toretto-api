@@ -35,6 +35,35 @@ module.exports = function(Member) {
     });
   });
 
+  Member.afterRemote('create', (ctx, member, next) => {
+    const RoleMapping = Member.app.models.RoleMapping;
+    const Role = Member.app.models.Role;
+    console.log(member.role);
+    // Get role id
+    Role.find(
+      {
+        where: {
+          name: member.role,
+        },
+      },
+      (err, role) => {
+        if (err) throw err;
+        // create a new record on rolemapping
+        RoleMapping.create(
+          {
+            principalType: 'USER',
+            principalId: member.id,
+            roleId: role.id,
+          },
+          (err, principal) => {
+            if (err) throw err;
+            next();
+          }
+        );
+      }
+    );
+  });
+
   Member.getRides = (id, cb) => {
     const Rides = Member.app.models.ride;
     const Company = Member.app.models.company;

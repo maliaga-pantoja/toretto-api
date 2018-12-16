@@ -1,47 +1,6 @@
 'use strict';
 
 module.exports = function(Member) {
-  Member.afterRemote('find', (ctx, members, next) => {
-    const RoleMapping = Member.app.models.RoleMapping;
-    const Role = Member.app.models.Role;
-
-    RoleMapping.find({}, (err, mappings) => {
-      Role.find({}, (err, roles) => {
-        members.forEach(member => {
-          member.role = roles.find(
-            role =>
-              String(role.id) ===
-              String(
-                mappings.find(
-                  mapping => String(mapping.principalId) === String(member.id)
-                ).roleId
-              )
-          ).name;
-        });
-        next();
-      });
-    });
-  });
-
-  Member.afterRemote('findById', (ctx, member, next) => {
-    const RoleMapping = Member.app.models.RoleMapping;
-    const Role = Member.app.models.Role;
-
-    RoleMapping.find(
-      {
-        where: {
-          principalId: member.id,
-        },
-      },
-      (err, mapping) => {
-        Role.findById(mapping[0].roleId, (err, role) => {
-          member.role = role.name;
-          next();
-        });
-      }
-    );
-  });
-
   Member.afterRemote('login', (ctx, result, next) => {
     const RoleMapping = Member.app.models.RoleMapping;
     const Role = Member.app.models.Role;
@@ -185,6 +144,22 @@ module.exports = function(Member) {
     description: 'Get driver rides.',
     http: {
       path: '/:id/rides',
+      verb: 'get',
+    },
+    accepts: {
+      arg: 'id',
+      type: 'string',
+    },
+    returns: {
+      arg: 'rides',
+      type: 'array',
+    },
+  });
+
+  Member.remoteMethod('getMembersByRole', {
+    description: 'Get members by role.',
+    http: {
+      path: '/role/:id',
       verb: 'get',
     },
     accepts: {

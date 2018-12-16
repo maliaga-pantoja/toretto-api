@@ -47,6 +47,10 @@
     "photo": {
       "type": "string"
     },
+    "role": {
+      "type": "string",
+      "required": true
+    },
     "status": {
       "type": "boolean",
       "default": true

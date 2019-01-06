@@ -4,8 +4,7 @@
   "base": "PersistedModel",
   "idInjection": true,
   "options": {
-    "validateUpsert": true,
-    "strictObjectIDCoercion": true
+    "validateUpsert": true
   },
   "properties": {
     "companyId": {
@@ -22,7 +21,9 @@
       "required": true
     },
     "destinyIds": {
-      "type": ["string"],
+      "type": [
+        "string"
+      ],
       "required": true
     },
     "driverId": {

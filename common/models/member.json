@@ -4,14 +4,9 @@
   "base": "User",
   "idInjection": true,
   "options": {
-    "validateUpsert": true,
-    "strictObjectIDCoercion": true
+    "validateUpsert": true
   },
   "properties": {
-    "companyId": {
-      "type": "string",
-      "required": true
-    },
     "created_at": {
       "type": "date",
       "required": true,
@@ -47,17 +42,28 @@
     "photo": {
       "type": "string"
     },
-    "role": {
-      "type": "string",
-      "required": true
-    },
     "status": {
       "type": "boolean",
       "default": true
     }
   },
   "validations": [],
-  "relations": {},
+  "relations": {
+    "roles": {
+      "type": "hasMany",
+      "model": "Role",
+      "foreignKey": "principalId",
+      "through": "RoleMapping"
+    },
+    "company": {
+      "type": "belongsTo",
+      "model": "company",
+      "foreignKey": "",
+      "options": {
+        "nestRemoting": true
+      }
+    }
+  },
   "acls": [
     {
       "accessType": "*",

@@ -39,7 +39,32 @@
     }
   },
   "validations": [],
-  "relations": {},
+  "relations": {
+    "ride": {
+      "type": "belongsTo",
+      "model": "ride",
+      "foreignKey": "",
+      "options": {
+        "nestRemoting": true
+      }
+    },
+    "companies": {
+      "type": "hasMany",
+      "model": "company",
+      "foreignKey": "",
+      "options": {
+        "nestRemoting": true
+      }
+    },
+    "members": {
+      "type": "hasMany",
+      "model": "member",
+      "foreignKey": "",
+      "options": {
+        "nestRemoting": true
+      }
+    }
+  },
   "acls": [],
   "methods": {}
 }

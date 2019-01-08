@@ -1,76 +1,81 @@
 {
-  "name": "member",
-  "plural": "members",
-  "base": "User",
-  "idInjection": true,
-  "options": {
-    "validateUpsert": true
-  },
-  "properties": {
-    "created_at": {
-      "type": "date",
-      "required": true,
-      "defaultFn": "now"
+    "name": "member",
+    "plural": "members",
+    "base": "User",
+    "idInjection": true,
+    "options": {
+        "validateUpsert": true
     },
-    "dni": {
-      "type": "string"
+    "properties": {
+        "created_at": {
+            "type": "date",
+            "required": true,
+            "defaultFn": "now"
+        },
+        "dni": {
+            "type": "string"
+        },
+        "dob": {
+            "type": "date"
+        },
+        "email": {
+            "type": "string",
+            "required": true
+        },
+        "job_title": {
+            "type": "string"
+        },
+        "lastname": {
+            "type": "string",
+            "required": true
+        },
+        "licence": {
+            "type": "string"
+        },
+        "name": {
+            "type": "string",
+            "required": true
+        },
+        "phone": {
+            "type": "string"
+        },
+        "photo": {
+            "type": "string"
+        },
+        "status": {
+            "type": "boolean",
+            "default": true
+        }
     },
-    "dob": {
-      "type": "date"
+    "validations": [],
+    "relations": {
+        "roles": {
+            "type": "hasMany",
+            "model": "Role",
+            "foreignKey": "principalId",
+            "through": "RoleMapping"
+        },
+        "company": {
+            "type": "belongsTo",
+            "model": "company",
+            "foreignKey": "",
+            "options": {
+                "nestRemoting": true
+            }
+        },
+        "vehicles": {
+            "type": "hasMany",
+            "model": "vehicle",
+            "foreignKey": "",
+            "options": {
+                "nestRemoting": true
+            }
+        }
     },
-    "email": {
-      "type": "string",
-      "required": true
-    },
-    "job_title": {
-      "type": "string"
-    },
-    "lastname": {
-      "type": "string",
-      "required": true
-    },
-    "licence": {
-      "type": "string"
-    },
-    "name": {
-      "type": "string",
-      "required": true
-    },
-    "phone": {
-      "type": "string"
-    },
-    "photo": {
-      "type": "string"
-    },
-    "status": {
-      "type": "boolean",
-      "default": true
-    }
-  },
-  "validations": [],
-  "relations": {
-    "roles": {
-      "type": "hasMany",
-      "model": "Role",
-      "foreignKey": "principalId",
-      "through": "RoleMapping"
-    },
-    "company": {
-      "type": "belongsTo",
-      "model": "company",
-      "foreignKey": "",
-      "options": {
-        "nestRemoting": true
-      }
-    }
-  },
-  "acls": [
-    {
-      "accessType": "*",
-      "principalType": "ROLE",
-      "principalId": "admin",
-      "permission": "ALLOW"
-    }
-  ],
-  "methods": {}
+    "acls": [{
+        "principalType": "ROLE",
+        "principalId": "admin",
+        "permission": "ALLOW"
+    }],
+    "methods": {}
 }

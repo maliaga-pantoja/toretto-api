@@ -41,6 +41,22 @@
       "options": {
         "nestRemoting": true
       }
+    },
+    "rides": {
+      "type": "hasMany",
+      "model": "ride",
+      "foreignKey": "",
+      "options": {
+        "nestRemoting": true
+      }
+    },
+    "destinies": {
+      "type": "hasMany",
+      "model": "destiny",
+      "foreignKey": "",
+      "options": {
+        "nestRemoting": true
+      }
     }
   },
   "acls": [],

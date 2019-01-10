@@ -4,8 +4,7 @@
   "base": "PersistedModel",
   "idInjection": true,
   "options": {
-    "validateUpsert": true,
-    "strictObjectIDCoercion": true
+    "validateUpsert": true
   },
   "properties": {
     "address": {

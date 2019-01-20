@@ -21,7 +21,9 @@
       "required": true
     },
     "destinyIds": {
-      "type": ["string"],
+      "type": [
+        "string"
+      ],
       "required": true
     },
     "driverId": {

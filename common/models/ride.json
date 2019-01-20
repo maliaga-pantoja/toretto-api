@@ -44,7 +44,32 @@
     }
   },
   "validations": [],
-  "relations": {},
+  "relations": {
+    "events": {
+      "type": "hasMany",
+      "model": "event",
+      "foreignKey": "",
+      "options": {
+        "nestRemoting": true
+      }
+    },
+    "trackings": {
+      "type": "hasMany",
+      "model": "tracking",
+      "foreignKey": "",
+      "options": {
+        "nestRemoting": true
+      }
+    },
+    "company": {
+      "type": "belongsTo",
+      "model": "company",
+      "foreignKey": "",
+      "options": {
+        "nestRemoting": true
+      }
+    }
+  },
   "acls": [],
   "methods": {}
 }

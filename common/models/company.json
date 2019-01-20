@@ -33,7 +33,32 @@
     }
   },
   "validations": [],
-  "relations": {},
+  "relations": {
+    "members": {
+      "type": "hasMany",
+      "model": "member",
+      "foreignKey": "",
+      "options": {
+        "nestRemoting": true
+      }
+    },
+    "rides": {
+      "type": "hasMany",
+      "model": "ride",
+      "foreignKey": "",
+      "options": {
+        "nestRemoting": true
+      }
+    },
+    "destinies": {
+      "type": "hasMany",
+      "model": "destiny",
+      "foreignKey": "",
+      "options": {
+        "nestRemoting": true
+      }
+    }
+  },
   "acls": [],
   "methods": {}
 }

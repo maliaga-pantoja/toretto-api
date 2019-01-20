@@ -29,7 +29,16 @@
     }
   },
   "validations": [],
-  "relations": {},
+  "relations": {
+    "ride": {
+      "type": "belongsTo",
+      "model": "ride",
+      "foreignKey": "",
+      "options": {
+        "nestRemoting": true
+      }
+    }
+  },
   "acls": [],
   "methods": {}
 }

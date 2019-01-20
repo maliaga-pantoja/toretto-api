@@ -1,8 +1,8 @@
 {
-    "atlas": {
-        "url": "mongodb+srv://toreto_usr:AscujYywZUhmqNWU@toreto-r8gtk.mongodb.net/toreto?retryWrites=true",
-        "name": "atlas",
-        "connector": "mongodb",
-        "useNewUrlParser": "true"
-    }
+  "atlas": {
+    "url": "mongodb+srv://toreto_usr:AscujYywZUhmqNWU@toreto-r8gtk.mongodb.net/toreto?retryWrites=true",
+    "name": "atlas",
+    "connector": "mongodb",
+    "useNewUrlParser": "true"
+  }
 }

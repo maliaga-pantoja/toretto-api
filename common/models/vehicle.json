@@ -1,71 +1,71 @@
 {
-    "name": "vehicle",
-    "plural": "vehicles",
-    "base": "PersistedModel",
-    "idInjection": true,
-    "options": {
-        "validateUpsert": true
+  "name": "vehicle",
+  "plural": "vehicles",
+  "base": "PersistedModel",
+  "idInjection": true,
+  "options": {
+    "validateUpsert": true
+  },
+  "properties": {
+    "color": {
+      "type": "string"
     },
-    "properties": {
-        "color": {
-            "type": "string"
-        },
-        "created_at": {
-            "type": "date",
-            "required": true,
-            "defaultFn": "now"
-        },
-        "driverId": {
-            "type": "string",
-            "required": true
-        },
-        "km": {
-            "type": "string"
-        },
-        "model": {
-            "type": "string"
-        },
-        "numberChasis": {
-            "type": "string"
-        },
-        "numberMotor": {
-            "type": "string"
-        },
-        "plate": {
-            "type": "string"
-        },
-        "soat": {
-            "type": "string"
-        },
-        "soatName": {
-            "type": "string"
-        },
-        "status": {
-            "type": "boolean",
-            "required": true,
-            "default": true
-        },
-        "tradeMark": {
-            "type": "string"
-        },
-        "type": {
-            "type": "string"
-        },
-        "year": {
-            "type": "string"
-        }
+    "created_at": {
+      "type": "date",
+      "required": true,
+      "defaultFn": "now"
     },
-    "validations": [],
-    "relations": {
-        "driver": {
-            "type": "belongsTo",
-            "model": "member",
-            "foreignKey": "driverId",
-            "options": {
-                "nestRemoting": true
-            }
-        }
+    "driverId": {
+      "type": "string",
+      "required": true
     },
-    "acls": [],
-    "methods": {}
+    "km": {
+      "type": "string"
+    },
+    "model": {
+      "type": "string"
+    },
+    "numberChasis": {
+      "type": "string"
+    },
+    "numberMotor": {
+      "type": "string"
+    },
+    "plate": {
+      "type": "string"
+    },
+    "soat": {
+      "type": "string"
+    },
+    "soatName": {
+      "type": "string"
+    },
+    "status": {
+      "type": "boolean",
+      "required": true,
+      "default": true
+    },
+    "tradeMark": {
+      "type": "string"
+    },
+    "type": {
+      "type": "string"
+    },
+    "year": {
+      "type": "string"
+    }
+  },
+  "validations": [],
+  "relations": {
+    "driver": {
+      "type": "belongsTo",
+      "model": "member",
+      "foreignKey": "driverId",
+      "options": {
+        "nestRemoting": true
+      }
+    }
+  },
+  "acls": [],
+  "methods": {}
 }

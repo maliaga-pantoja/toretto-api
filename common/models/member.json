@@ -56,7 +56,24 @@
     }
   },
   "validations": [],
-  "relations": {},
+  "relations": {
+    "company": {
+      "type": "belongsTo",
+      "model": "company",
+      "foreignKey": "companyId",
+      "options": {
+        "nestRemoting": true
+      }
+    },
+    "trackings": {
+      "type": "hasMany",
+      "model": "tracking",
+      "foreignKey": "trackingId",
+      "options": {
+        "nestRemoting": true
+      }
+    }
+  },
   "acls": [
     {
       "accessType": "*",

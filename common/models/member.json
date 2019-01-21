@@ -82,11 +82,10 @@
       "permission": "ALLOW"
     },
     {
-      "accessType": "EXECUTE",
+      "accessType": "*",
       "principalType": "ROLE",
-      "principalId": "$everyone",
-      "permission": "ALLOW",
-      "property": "login"
+      "principalId": "$owner",
+      "permission": "ALLOW"
     }
   ],
   "methods": {}

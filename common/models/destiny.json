@@ -50,7 +50,7 @@
     "company": {
       "type": "belongsTo",
       "model": "company",
-      "foreignKey": "",
+      "foreignKey": "companyId",
       "options": {
         "nestRemoting": true
       }

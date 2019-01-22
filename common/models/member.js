@@ -1,60 +1,58 @@
 'use strict';
 
 module.exports = function(Member) {
-    // Member.afterRemote('login', (ctx, result, next) => {
-    //   const RoleMapping = Member.app.models.RoleMapping;
-    //   const Role = Member.app.models.Role;
-    //   const Vehicle = Member.app.models.Vehicle;
+    Member.afterRemote('login', (ctx, result, next) => {
+        const RoleMapping = Member.app.models.RoleMapping;
+        const Role = Member.app.models.Role;
+        const Vehicle = Member.app.models.Vehicle;
 
-    //   Member.findById(result.userId, (err, member) => {
-    //     RoleMapping.find(
-    //       {
-    //         where: {
-    //           principalId: result.userId,
-    //         },
-    //       },
-    //       (err, mapping) => {
-    //         Role.findById(mapping[0].roleId, (err, role) => {
-    //           Vehicle.find(
-    //             {
-    //               where: {
-    //                 driverId: result.userId,
-    //               },
-    //             },
-    //             (err, vehicle) => {
-    //               result.role = role.name;
-    //               result.member = member;
-    //               result.vehicle = vehicle;
+        Member.findById(result.userId, (err, member) => {
+            RoleMapping.find({
+                    where: {
+                        principalId: result.userId,
+                    },
+                },
+                (err, mapping) => {
+                    Role.findById(mapping[0].roleId, (err, role) => {
+                        Vehicle.find({
+                                where: {
+                                    driverId: result.userId,
+                                },
+                            },
+                            (err, vehicle) => {
+                                result.role = role.name;
+                                result.member = member;
+                                result.vehicle = vehicle;
 
-    //               next();
-    //             }
-    //           );
-    //         });
-    //       }
-    //     );
-    //   });
-    // });
+                                next();
+                            }
+                        );
+                    });
+                }
+            );
+        });
+    });
 
-  Member.afterRemote('create', (ctx, member, next) => {
-      const RoleMapping = Member.app.models.RoleMapping;
-      const Role = Member.app.models.Role;
+    Member.afterRemote('create', (ctx, member, next) => {
+        const RoleMapping = Member.app.models.RoleMapping;
+        const Role = Member.app.models.Role;
         // Get role id
-      Role.find({
-          where: {
-                  name: member.role,
+        Role.find({
+                where: {
+                    name: member.role,
                 },
-        },
+            },
             (err, role) => {
-              if (err) throw err;
+                if (err) throw err;
                 // create a new record on rolemapping
-              RoleMapping.create({
-                  principalType: 'USER',
-                  principalId: member.id,
-                  roleId: role.id,
-                },
+                RoleMapping.create({
+                        principalType: 'USER',
+                        principalId: member.id,
+                        roleId: role.id,
+                    },
                     (err, principal) => {
-                      if (err) throw err;
-                      next();
+                        if (err) throw err;
+                        next();
                     }
                 );
             }

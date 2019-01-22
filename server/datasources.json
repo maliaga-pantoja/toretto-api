@@ -1,8 +1,21 @@
 {
-  "atlas": {
-    "url": "mongodb+srv://toreto_usr:AscujYywZUhmqNWU@toreto-r8gtk.mongodb.net/toreto?retryWrites=true",
-    "name": "atlas",
-    "connector": "mongodb",
-    "useNewUrlParser": "true"
-  }
+    "atlas": {
+        "url": "mongodb+srv://toreto_usr:AscujYywZUhmqNWU@toreto-r8gtk.mongodb.net/toreto?retryWrites=true",
+        "name": "atlas",
+        "connector": "mongodb",
+        "useNewUrlParser": "true"
+    },
+    "cloudinary": {
+        "name": "cloudinary",
+        "connector": "@kolach/loopback-component-cloudinary",
+        "config": {
+            "cloud_name": "wyracocha-com",
+            "api_key": "676746722912316",
+            "api_secret": "izCtQPt-LkHFpo8aopY6OVtkcyQ"
+        },
+        "upload": {
+            "tags": "autos",
+            "folder": "autos/users"
+        }
+    }
 }

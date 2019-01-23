@@ -1,75 +1,99 @@
 {
-  "name": "ride",
-  "plural": "rides",
-  "base": "PersistedModel",
-  "idInjection": true,
-  "options": {
-    "validateUpsert": true
-  },
-  "properties": {
-    "companyId": {
-      "type": "string",
-      "required": true
+    "name": "ride",
+    "plural": "rides",
+    "base": "PersistedModel",
+    "idInjection": true,
+    "options": {
+        "validateUpsert": true
     },
-    "created_at": {
-      "type": "date",
-      "required": true,
-      "defaultFn": "now"
+    "properties": {
+        "companyId": {
+            "type": "string",
+            "required": true
+        },
+        "created_at": {
+            "type": "date",
+            "required": true,
+            "defaultFn": "now"
+        },
+        "date": {
+            "type": "date",
+            "required": true
+        },
+        "destinyIds": {
+            "type": [
+                "string"
+            ],
+            "required": true
+        },
+        "driverId": {
+            "type": "string",
+            "required": true
+        },
+        "passengerId": {
+            "type": "string",
+            "required": true
+        },
+        "route": {
+            "type": "string"
+        },
+        "type": {
+            "type": "string",
+            "required": true,
+            "default": "fijo"
+        }
     },
-    "date": {
-      "type": "date",
-      "required": true
+    "validations": [],
+    "relations": {
+        "events": {
+            "type": "hasMany",
+            "model": "event",
+            "foreignKey": "",
+            "options": {
+                "nestRemoting": true
+            }
+        },
+        "trackings": {
+            "type": "hasMany",
+            "model": "tracking",
+            "foreignKey": "",
+            "options": {
+                "nestRemoting": true
+            }
+        },
+        "company": {
+            "type": "belongsTo",
+            "model": "company",
+            "foreignKey": "companyId",
+            "options": {
+                "nestRemoting": true
+            }
+        },
+        "driver": {
+            "type": "belongsTo",
+            "model": "member",
+            "foreignKey": "driverId",
+            "options": {
+                "nestRemoting": true
+            }
+        },
+        "passenger": {
+            "type": "belongsTo",
+            "model": "member",
+            "foreignKey": "passengerId",
+            "options": {
+                "nestRemoting": true
+            }
+        },
+        "destinies": {
+            "type": "hasMany",
+            "model": "destiny",
+            "foreignKey": "destinyIds",
+            "options": {
+                "nestRemoting": true
+            }
+        }
     },
-    "destinyIds": {
-      "type": [
-        "string"
-      ],
-      "required": true
-    },
-    "driverId": {
-      "type": "string",
-      "required": true
-    },
-    "passengerId": {
-      "type": "string",
-      "required": true
-    },
-    "route": {
-      "type": "string"
-    },
-    "type": {
-      "type": "string",
-      "required": true,
-      "default": "fijo"
-    }
-  },
-  "validations": [],
-  "relations": {
-    "events": {
-      "type": "hasMany",
-      "model": "event",
-      "foreignKey": "",
-      "options": {
-        "nestRemoting": true
-      }
-    },
-    "trackings": {
-      "type": "hasMany",
-      "model": "tracking",
-      "foreignKey": "",
-      "options": {
-        "nestRemoting": true
-      }
-    },
-    "company": {
-      "type": "belongsTo",
-      "model": "company",
-      "foreignKey": "",
-      "options": {
-        "nestRemoting": true
-      }
-    }
-  },
-  "acls": [],
-  "methods": {}
+    "acls": [],
+    "methods": {}
 }

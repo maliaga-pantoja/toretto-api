@@ -1,75 +1,75 @@
 {
-    "_meta": {
-        "sources": [
-            "loopback/common/models",
-            "loopback/server/models",
-            "../common/models",
-            "./models"
-        ],
-        "mixins": [
-            "loopback/common/mixins",
-            "loopback/server/mixins",
-            "../common/mixins",
-            "./mixins"
-        ]
-    },
-    "User": {
-        "dataSource": "atlas",
-        "public": false
-    },
-    "AccessToken": {
-        "dataSource": "atlas",
-        "public": false
-    },
-    "ACL": {
-        "dataSource": "atlas",
-        "public": false
-    },
-    "RoleMapping": {
-        "dataSource": "atlas",
-        "public": false,
-        "options": {
-            "strictObjectIDCoercion": true
-        }
-    },
-    "Role": {
-        "dataSource": "atlas",
-        "public": false
-    },
-    "member": {
-        "dataSource": "atlas",
-        "public": true
-    },
-    "company": {
-        "dataSource": "atlas",
-        "public": true
-    },
-    "vehicle": {
-        "dataSource": "atlas",
-        "public": true
-    },
-    "panic": {
-        "dataSource": "atlas",
-        "public": true
-    },
-    "destiny": {
-        "dataSource": "atlas",
-        "public": true
-    },
-    "ride": {
-        "dataSource": "atlas",
-        "public": true
-    },
-    "event": {
-        "dataSource": "atlas",
-        "public": true
-    },
-    "tracking": {
-        "dataSource": "atlas",
-        "public": true
-    },
-    "Image": {
-        "dataSource": "cloudinary",
-        "public": true
+  "_meta": {
+    "sources": [
+      "loopback/common/models",
+      "loopback/server/models",
+      "../common/models",
+      "./models"
+    ],
+    "mixins": [
+      "loopback/common/mixins",
+      "loopback/server/mixins",
+      "../common/mixins",
+      "./mixins"
+    ]
+  },
+  "User": {
+    "dataSource": "atlas",
+    "public": false
+  },
+  "AccessToken": {
+    "dataSource": "atlas",
+    "public": false
+  },
+  "ACL": {
+    "dataSource": "atlas",
+    "public": false
+  },
+  "RoleMapping": {
+    "dataSource": "atlas",
+    "public": false,
+    "options": {
+      "strictObjectIDCoercion": true
     }
+  },
+  "Role": {
+    "dataSource": "atlas",
+    "public": false
+  },
+  "member": {
+    "dataSource": "atlas",
+    "public": true
+  },
+  "company": {
+    "dataSource": "atlas",
+    "public": true
+  },
+  "vehicle": {
+    "dataSource": "atlas",
+    "public": true
+  },
+  "panic": {
+    "dataSource": "atlas",
+    "public": true
+  },
+  "destiny": {
+    "dataSource": "atlas",
+    "public": true
+  },
+  "ride": {
+    "dataSource": "atlas",
+    "public": true
+  },
+  "event": {
+    "dataSource": "atlas",
+    "public": true
+  },
+  "tracking": {
+    "dataSource": "atlas",
+    "public": true
+  },
+  "Image": {
+    "dataSource": "cloudinary",
+    "public": true
+  }
 }

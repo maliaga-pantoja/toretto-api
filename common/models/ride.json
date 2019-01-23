@@ -84,14 +84,6 @@
             "options": {
                 "nestRemoting": true
             }
-        },
-        "destinies": {
-            "type": "hasMany",
-            "model": "destiny",
-            "foreignKey": "destinyIds",
-            "options": {
-                "nestRemoting": true
-            }
         }
     },
     "acls": [],

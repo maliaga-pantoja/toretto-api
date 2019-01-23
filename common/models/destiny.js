@@ -1,6 +1,31 @@
 'use strict';
 
 module.exports = Destiny => {
+    Destiny.getZones = (cb) => {
+        Destiny.find({},
+            (err, destinies) => {
+                const zones = [];
+                destinies.forEach(destiny => {
+                    if (!zones.includes(destiny.zone)) {
+                        zones.push(destiny.zone);
+                    }
+                });
+                cb(null, zones);
+            }
+        );
+    };
+
+    Destiny.remoteMethod('getZones', {
+        description: 'Get destiny zones',
+        http: {
+            path: '/zones',
+            verb: 'get',
+        },
+        returns: {
+            arg: 'zones',
+            type: 'array',
+        },
+    });
     // Destiny.afterRemote('find', (ctx, destiny, next) => {
     //   const Company = Destiny.app.models.company;
 

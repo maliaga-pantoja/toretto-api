@@ -1,6 +1,32 @@
 'use strict';
 
 module.exports = Ride => {
+
+    // Ride.afterRemote('find', (ctx, rides, next) => {
+    //     const Member = Ride.app.models.member;
+    //     const Company = Ride.app.models.company;
+    //     const Destiny = Ride.app.models.destiny;
+
+
+
+    //     ctx.result.map((ride, index) => {
+    //         Destiny.find({
+    //             where: {
+    //                 id: {
+    //                     inq: ride.destinyIds,
+    //                 },
+    //             },
+    //         }, (err, destinies) => {
+
+    //             ride.destinies = destinies;
+    //             if (index === rides.length - 1) {
+    //                 console.log(index, rides.length, rides.length - 1)
+    //                 next();
+    //             }
+    //         })
+    //     })
+
+    // })
     // Ride.afterRemote('find', (ctx, rides, next) => {
     //     const Member = Ride.app.models.member;
     //     const Company = Ride.app.models.company;

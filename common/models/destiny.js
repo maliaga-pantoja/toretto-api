@@ -15,6 +15,29 @@ module.exports = Destiny => {
         );
     };
 
+    Destiny.getDestiniesByCompany = (companyId, cb) => {
+        Destiny.find({},
+            (err, destinies) => {
+
+                destinies = destinies.filter(destiny => destiny.companyId === companyId);
+
+                cb(null, destinies);
+            }
+        );
+    };
+
+    Destiny.getDestiniesByZone = (companyId, zoneId, cb) => {
+        Destiny.find({},
+            (err, destinies) => {
+
+                destinies = destinies.filter(destiny => destiny.companyId === companyId);
+                destinies = destinies.filter(destiny => destiny.zone === zoneId);
+
+                cb(null, destinies);
+            }
+        );
+    };
+
     Destiny.remoteMethod('getZones', {
         description: 'Get destiny zones',
         http: {
@@ -23,6 +46,41 @@ module.exports = Destiny => {
         },
         returns: {
             arg: 'zones',
+            type: 'array',
+        },
+    });
+
+    Destiny.remoteMethod('getDestiniesByCompany', {
+        description: 'Get destinies by company',
+        http: {
+            path: '/company/:id',
+            verb: 'get',
+        },
+        accepts: {
+            arg: 'id',
+            type: 'string',
+        },
+        returns: {
+            arg: 'destinies',
+            type: 'array',
+        },
+    });
+
+    Destiny.remoteMethod('getDestiniesByZone', {
+        description: 'Get destinies by company and zone',
+        http: {
+            path: '/company/:id/:zone',
+            verb: 'get',
+        },
+        accepts: [{
+            arg: 'id',
+            type: 'string',
+        }, {
+            arg: 'zone',
+            type: 'string',
+        }],
+        returns: {
+            arg: 'destinies',
             type: 'array',
         },
     });

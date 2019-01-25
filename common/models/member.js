@@ -14,13 +14,10 @@ module.exports = function(Member) {
                 },
                 (err, mapping) => {
                     Role.findById(mapping[0].roleId, (err, role) => {
-                        Vehicle.find({
-                                where: {
-                                    driverId: result.userId,
-                                },
-                            },
-                            (err, vehicle) => {
-                                result.role = role.name;
+                        Vehicle.find({},
+                            (err, vehicles) => {
+                                const vehicle = vehicles.find(v => v.driverId = result.userId);
+
                                 result.member = member;
                                 result.vehicle = vehicle;
 

@@ -7,6 +7,74 @@ module.exports = app => {
     // var RoleMapping = app.models.RoleMapping;
     // var Vehicle = app.models.vehicle;
 
+    // Member.create(
+    //     [{
+    //         companyId: '123',
+    //         username: 'Giacomo',
+    //         name: 'Giacomo',
+    //         lastname: 'Giacomo',
+    //         email: 'admin@admin.com',
+    //         password: '123123a',
+    //         role: 'admin'
+    //     }],
+    //     (err, members) => {
+    //         if (err) throw err;
+
+    //         // create the admin role
+    //         Role.create({
+    //                 name: 'admin',
+    //             },
+    //             (err, role) => {
+    //                 if (err) throw err;
+
+    //                 // make Giacomo an admin
+    //                 role.principals.create({
+    //                         principalType: RoleMapping.USER,
+    //                         principalId: members[0].id,
+    //                     },
+    //                     (err, principal) => {
+    //                         if (err) throw err;
+    //                     }
+    //                 );
+    //             }
+    //         );
+
+    //         // create the contact_admin role
+    //         Role.create({
+    //                 name: 'contact_admin',
+    //             },
+    //             (err, role) => {
+
+    //             }
+    //         );
+    //         // create the contact role
+    //         Role.create({
+    //                 name: 'contact',
+    //             },
+    //             (err, role) => {
+
+    //             }
+    //         );
+    //         // create the driver role
+    //         Role.create({
+    //                 name: 'driver',
+    //             },
+    //             (err, role) => {
+
+    //             }
+    //         );
+    //         // create the passenger role
+    //         Role.create({
+    //                 name: 'passenger',
+    //             },
+    //             (err, role) => {
+
+    //             }
+    //         );
+    //     })
+
+    //********************************************** */
+
     // RoleMapping.belongsTo(Member);
     // Member.hasMany(RoleMapping, {
     //     foreignKey: 'principalId',

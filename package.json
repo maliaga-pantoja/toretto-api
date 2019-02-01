@@ -16,6 +16,7 @@
     "cloudinary": "^1.11.0",
     "compression": "^1.0.3",
     "cors": "^2.5.2",
+    "event-stream": "^4.0.1",
     "helmet": "^3.10.0",
     "lodash": "^4.17.11",
     "loopback": "^3.22.0",

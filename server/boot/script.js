@@ -7,6 +7,11 @@ module.exports = app => {
     // var RoleMapping = app.models.RoleMapping;
     // var Vehicle = app.models.vehicle;
 
+    // {
+    //   "email": "admin@admin.com",
+    //   "password": "123123a"
+    // }
+
     // Member.create(
     //     [{
     //         companyId: '123',

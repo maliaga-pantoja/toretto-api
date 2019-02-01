@@ -7,7 +7,4 @@ module.exports = function(app) {
         changes.pipe(es.stringify()).pipe(process.stdout);
     });
 
-    // Panic.create({
-    //     foo: 'bar'
-    // });
 }

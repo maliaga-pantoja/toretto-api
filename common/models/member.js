@@ -41,11 +41,11 @@ module.exports = function(Member) {
             },
             (err, role) => {
                 if (err) throw err;
-                // create a new record on rolemapping
+                // create a new record on role mapping
                 RoleMapping.create({
                         principalType: 'USER',
                         principalId: member.id,
-                        roleId: role.id,
+                        roleId: role[0].id,
                     },
                     (err, principal) => {
                         if (err) throw err;

@@ -42,7 +42,7 @@
             "required": true,
             "default": "fijo"
         },
-        "state": {
+        "status": {
             "type": "string",
             "required": true,
             "default": "1"

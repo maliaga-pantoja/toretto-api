@@ -3,16 +3,19 @@
 module.exports = function(Report) {
 
     //** Get current day rides
-    async function getTodayRides() {
+    async function getTodayRides(companyId) {
         try {
             const Rides = Report.app.models.ride;
 
-            const rides = await Rides.find({
+            let rides = await Rides.find({
                 where: {
                     date: new Date()
                 }
             })
-            return rides;
+
+            rides = companyId ? rides.filter(r => String(r.companyId) === companyId) : rides;
+
+            return rides.length;
 
         } catch (e) {
             return e.message;
@@ -20,9 +23,10 @@ module.exports = function(Report) {
     }
 
     //** Get finished rides from current day
-    async function getTodaysFinishedRides() {
+    async function getTodaysFinishedRides(companyId) {
         try {
             const Rides = Report.app.models.ride;
+
 
             const rides = await Rides.find({
                 where: {
@@ -33,7 +37,7 @@ module.exports = function(Report) {
                     }]
                 }
             })
-            return rides;
+            return rides.length;
 
         } catch (e) {
             return e.message;
@@ -42,7 +46,7 @@ module.exports = function(Report) {
 
 
     //** Get tomorrow rides
-    async function getTomorrowRides() {
+    async function getTomorrowRides(companyId) {
         try {
             const Rides = Report.app.models.ride;
 
@@ -55,7 +59,7 @@ module.exports = function(Report) {
                     date: tomorrow
                 }
             })
-            return rides;
+            return rides.length;
 
         } catch (e) {
             return e.message;
@@ -64,13 +68,13 @@ module.exports = function(Report) {
 
 
 
-    Report.getDashboard = async () => {
+    Report.getDashboard = async (companyId) => {
 
         return {
             rides: {
-                today: await getTodayRides(),
-                finishedToday: await getTodaysFinishedRides(),
-                tomorrow: await getTomorrowRides()
+                today: await getTodayRides(companyId),
+                finishedToday: await getTodaysFinishedRides(companyId),
+                tomorrow: await getTomorrowRides(companyId)
             },
             destinies: {
                 today: 0,
@@ -94,12 +98,18 @@ module.exports = function(Report) {
     Report.remoteMethod('getDashboard', {
         description: 'Get dashboard',
         http: {
+            path: '/dashboard',
             verb: 'get',
+        },
+        accepts: {
+            arg: 'companyId',
+            type: 'string',
+            required: false,
+            description: "CompanyId Id. If not set, get all data."
         },
         returns: {
             root: true,
             type: 'object'
         },
     });
-
 };

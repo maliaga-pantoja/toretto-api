@@ -2,7 +2,7 @@
 
 module.exports = function(Report) {
 
-    //** Get rides from current day
+    //** Get current day rides
     async function getTodayRides() {
         try {
             const Rides = Report.app.models.ride;
@@ -19,7 +19,7 @@ module.exports = function(Report) {
         }
     }
 
-    //** Get rides from current day
+    //** Get finished rides from current day
     async function getTodaysFinishedRides() {
         try {
             const Rides = Report.app.models.ride;
@@ -41,6 +41,28 @@ module.exports = function(Report) {
     }
 
 
+    //** Get tomorrow rides
+    async function getTomorrowRides() {
+        try {
+            const Rides = Report.app.models.ride;
+
+            // Calculate tomorrow date
+            const tomorrow = new Date();
+            tomorrow.setDate(tomorrow.getDate() + 1);
+
+            const rides = await Rides.find({
+                where: {
+                    date: tomorrow
+                }
+            })
+            return rides;
+
+        } catch (e) {
+            return e.message;
+        }
+    }
+
+
 
     Report.getDashboard = async () => {
 
@@ -48,8 +70,7 @@ module.exports = function(Report) {
             rides: {
                 today: await getTodayRides(),
                 finishedToday: await getTodaysFinishedRides(),
-                base: 0,
-                additional: 0,
+                tomorrow: await getTomorrowRides()
             },
             destinies: {
                 today: 0,
@@ -57,6 +78,8 @@ module.exports = function(Report) {
                 finished: 0
             },
             drivers: {
+                base: 0,
+                additional: 0,
                 yesterday: [],
                 today: []
             },

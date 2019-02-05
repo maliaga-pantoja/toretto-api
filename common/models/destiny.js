@@ -19,7 +19,7 @@ module.exports = Destiny => {
         Destiny.find({},
             (err, destinies) => {
 
-                destinies = destinies.filter(destiny => destiny.companyId === companyId);
+                destinies = destinies.filter(destiny => String(destiny.companyId) === companyId);
 
                 cb(null, destinies);
             }
@@ -30,7 +30,7 @@ module.exports = Destiny => {
         Destiny.find({},
             (err, destinies) => {
 
-                destinies = destinies.filter(destiny => destiny.companyId === companyId);
+                destinies = destinies.filter(destiny => String(destiny.companyId) === companyId);
                 destinies = destinies.filter(destiny => destiny.zone === zoneId);
 
                 cb(null, destinies);

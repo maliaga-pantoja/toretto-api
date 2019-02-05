@@ -20,7 +20,7 @@ module.exports = function(Report) {
     }
 
     //** Get rides from current day
-    async function getTodayFinishedRides() {
+    async function getTodaysFinishedRides() {
         try {
             const Rides = Report.app.models.ride;
 
@@ -47,8 +47,24 @@ module.exports = function(Report) {
         return {
             rides: {
                 today: await getTodayRides(),
-                todayFinished: await getTodayFinishedRides()
-            }
+                finishedToday: await getTodaysFinishedRides(),
+                base: 0,
+                additional: 0,
+            },
+            destinies: {
+                today: 0,
+                finishedToday: 0,
+                finished: 0
+            },
+            drivers: {
+                yesterday: [],
+                today: []
+            },
+            passengers: {
+                total: 0,
+                onBoard: 0
+            },
+            panic: [],
 
 
         }

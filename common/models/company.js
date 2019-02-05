@@ -5,7 +5,9 @@ module.exports = Company => {
         const Destiny = Company.app.models.destiny;
         Destiny.find({},
             (err, destinies) => {
-                destinies = destinies.filter(d => d.companyId === id);
+
+                destinies = destinies.filter(d => String(d.companyId) === id);
+
                 const zones = [];
                 destinies.forEach(destiny => {
                     if (!zones.includes(destiny.zone)) {

@@ -75,33 +75,30 @@ module.exports = function(Report) {
             destinies: {
                 today: 0,
                 finishedToday: 0,
-                finished: 0
+                tomorrow: 0
             },
-            drivers: {
+            mobile: {
                 base: 0,
                 additional: 0,
-                yesterday: [],
-                today: []
+                baseTomorrow: 0,
+                additionalTomorrow: 0,
             },
             passengers: {
-                total: 0,
-                onBoard: 0
-            },
-            panic: [],
-
-
+                today: 0,
+                onBoard: 0,
+                tomorrow: 0
+            }
         }
     }
 
     Report.remoteMethod('getDashboard', {
-        description: 'Get company zones',
+        description: 'Get dashboard',
         http: {
-            path: '/dashboard',
             verb: 'get',
         },
         returns: {
-            arg: 'dashboard',
-            type: 'object',
+            root: true,
+            type: 'object'
         },
     });
 

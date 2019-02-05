@@ -43,9 +43,9 @@
             "default": "fijo"
         },
         "state": {
-            "type": "boolean",
+            "type": "string",
             "required": true,
-            "default": true
+            "default": "1"
         }
     },
     "validations": [],

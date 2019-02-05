@@ -1,97 +1,98 @@
 {
-    "name": "member",
-    "plural": "members",
-    "base": "User",
-    "idInjection": true,
-    "options": {
-        "validateUpsert": true
+  "name": "member",
+  "plural": "members",
+  "base": "User",
+  "idInjection": true,
+  "options": {
+    "validateUpsert": true
+  },
+  "properties": {
+    "companyId": {
+      "type": "string",
+      "required": true
     },
-    "properties": {
-        "companyId": {
-            "type": "string",
-            "required": true
-        },
-        "created_at": {
-            "type": "date",
-            "required": true,
-            "defaultFn": "now"
-        },
-        "dni": {
-            "type": "string"
-        },
-        "dob": {
-            "type": "date"
-        },
-        "email": {
-            "type": "string",
-            "required": true
-        },
-        "job_title": {
-            "type": "string"
-        },
-        "lastname": {
-            "type": "string",
-            "required": true
-        },
-        "licence": {
-            "type": "string"
-        },
-        "name": {
-            "type": "string",
-            "required": true
-        },
-        "phone": {
-            "type": "string"
-        },
-        "photo": {
-            "type": "string"
-        },
-        "role": {
-            "type": "string",
-            "required": true
-        },
-        "status": {
-            "type": "boolean",
-            "default": true
-        }
+    "created_at": {
+      "type": "date",
+      "required": true,
+      "defaultFn": "now"
     },
-    "validations": [],
-    "relations": {
-        "company": {
-            "type": "belongsTo",
-            "model": "company",
-            "foreignKey": "companyId",
-            "options": {
-                "nestRemoting": true
-            }
-        },
-        "trackings": {
-            "type": "hasMany",
-            "model": "tracking",
-            "foreignKey": "trackingId",
-            "options": {
-                "nestRemoting": true
-            }
-        }
+    "dni": {
+      "type": "string"
     },
-    "acls": [{
-            "accessType": "*",
-            "principalType": "ROLE",
-            "principalId": "admin",
-            "permission": "ALLOW"
-        },
-        {
-            "accessType": "*",
-            "principalType": "ROLE",
-            "principalId": "$owner",
-            "permission": "ALLOW"
-        },
-        {
-            "accessType": "*",
-            "principalType": "ROLE",
-            "principalId": "contact_admin",
-            "permission": "ALLOW"
-        }
-    ],
-    "methods": {}
+    "dob": {
+      "type": "date"
+    },
+    "email": {
+      "type": "string",
+      "required": true
+    },
+    "job_title": {
+      "type": "string"
+    },
+    "lastname": {
+      "type": "string",
+      "required": true
+    },
+    "licence": {
+      "type": "string"
+    },
+    "name": {
+      "type": "string",
+      "required": true
+    },
+    "phone": {
+      "type": "string"
+    },
+    "photo": {
+      "type": "string"
+    },
+    "role": {
+      "type": "string",
+      "required": true
+    },
+    "status": {
+      "type": "boolean",
+      "default": true
+    }
+  },
+  "validations": [],
+  "relations": {
+    "company": {
+      "type": "belongsTo",
+      "model": "company",
+      "foreignKey": "companyId",
+      "options": {
+        "nestRemoting": true
+      }
+    },
+    "trackings": {
+      "type": "hasMany",
+      "model": "tracking",
+      "foreignKey": "trackingId",
+      "options": {
+        "nestRemoting": true
+      }
+    }
+  },
+  "acls": [
+    {
+      "accessType": "*",
+      "principalType": "ROLE",
+      "principalId": "admin",
+      "permission": "ALLOW"
+    },
+    {
+      "accessType": "*",
+      "principalType": "ROLE",
+      "principalId": "$owner",
+      "permission": "ALLOW"
+    },
+    {
+      "accessType": "*",
+      "principalType": "ROLE",
+      "principalId": "contact_admin",
+      "permission": "ALLOW"
+    }
+  ],
+  "methods": {}
 }

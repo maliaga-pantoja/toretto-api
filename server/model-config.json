@@ -75,5 +75,9 @@
   "Image": {
     "dataSource": "cloudinary",
     "public": true
+  },
+  "feedback": {
+    "dataSource": "atlas",
+    "public": true
   }
 }

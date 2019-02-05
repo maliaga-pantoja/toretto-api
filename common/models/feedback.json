@@ -1,0 +1,35 @@
+{
+  "name": "feedback",
+  "base": "PersistedModel",
+  "idInjection": true,
+  "options": {
+    "validateUpsert": true
+  },
+  "properties": {
+    "comments": {
+      "type": "string",
+      "required": true
+    },
+    "likes": {
+      "type": "string"
+    },
+    "created_at": {
+      "type": "date",
+      "required": true,
+      "defaultFn": "now"
+    }
+  },
+  "validations": [],
+  "relations": {
+    "rideId": {
+      "type": "belongsTo",
+      "model": "ride",
+      "foreignKey": "rideId",
+      "options": {
+        "nestRemoting": true
+      }
+    }
+  },
+  "acls": [],
+  "methods": {}
+}

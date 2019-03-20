@@ -24,7 +24,7 @@
     "loopback-component-cloudinary": "^0.1.1",
     "loopback-component-explorer": "^6.2.0",
     "loopback-connector-mongodb": "^3.9.2",
-    "nodemon": "^1.18.9",
+    "nodemon": "^1.18.10",
     "serve-favicon": "^2.0.1",
     "strong-error-handler": "^3.0.0"
   },

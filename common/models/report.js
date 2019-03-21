@@ -17,6 +17,7 @@ module.exports = function(Report) {
                 rides;
 
             return rides.length;
+
         } catch (e) {
             return e.message;
         }
@@ -66,15 +67,21 @@ module.exports = function(Report) {
 
     //** Get total destinies from today  */
     async function getTotalTodayDestinies(companyId) {
-        try {
-            const todayRides = await getTodayRides(companyId);
-            let totalDestinies = 0;
 
-            todayRides.forEach(ride => {
-                totalDestinies += ride.destinyIds.length;
+        try {
+            const Destinies = Report.app.models.destinies
+
+            const destinies = await Destinies.find({
+                where: {
+                    date: new Date()
+                }
             });
 
-            return totalDestinies;
+            destinies = companyId ?
+                destinies.filter(d => String(d.companyId) === companyId) :
+                destinies;
+
+            return destinies.length;
 
         } catch (e) {
             return e.message;
@@ -89,7 +96,7 @@ module.exports = function(Report) {
                 tomorrow: await getTomorrowRides(companyId)
             },
             destinies: {
-                today: 0,
+                today: await getTotalTodayDestinies(companyId),
                 finishedToday: 0,
                 tomorrow: 0
             },

@@ -40,6 +40,11 @@ module.exports = function(Report) {
                     ]
                 }
             });
+
+            rides = companyId ?
+                rides.filter(r => String(r.companyId) === companyId) :
+                rides;
+
             return rides.length;
         } catch (e) {
             return e.message;
@@ -60,6 +65,10 @@ module.exports = function(Report) {
                     date: tomorrow
                 }
             });
+
+            rides = companyId ?
+                rides.filter(r => String(r.companyId) === companyId) :
+                rides;
 
             return rides.length;
 
@@ -95,13 +104,17 @@ module.exports = function(Report) {
         try {
             const todayRides = await getTodaysFinishedRides(companyId);
 
-            let totalFinishedDestinies = 0;
+            let totalTodayFinishedDestinies = 0;
+
+            todayRides = companyId ?
+                todayRides.filter(r => String(r.companyId) === companyId) :
+                todayRides;
 
             todayRides.forEach(ride => {
-                totalFinishedDestinies += ride.destinyIds.length;
+                totalTodayFinishedDestinies += ride.destinyIds.length;
             });
 
-            return totalFinishedDestinies;
+            return totalTodayFinishedDestinies;
 
         } catch (e) {
             return e.message;

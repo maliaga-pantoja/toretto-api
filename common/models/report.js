@@ -67,7 +67,6 @@ module.exports = function(Report) {
 
     //** Get total destinies from today  */
     async function getTotalTodayDestinies(companyId) {
-
         try {
             const Destinies = Report.app.models.destinies
 
@@ -88,6 +87,23 @@ module.exports = function(Report) {
         }
     }
 
+    //** Get finished destinies from current day
+    async function getTodaysFinishedDestinies(companyId) {
+        try {
+            const todayRides = await getTodaysFinishedRides(companyId);
+            let totalDestinies = 0;
+
+            todayRides.forEach(ride => {
+                totalDestinies += ride.destinyIds.length;
+            });
+
+            return totalDestinies;
+
+        } catch (e) {
+            return e.message;
+        }
+    }
+
     Report.getDashboard = async companyId => {
         return {
             rides: {
@@ -97,7 +113,7 @@ module.exports = function(Report) {
             },
             destinies: {
                 today: await getTotalTodayDestinies(companyId),
-                finishedToday: 0,
+                finishedToday: await getTodaysFinishedDestinies(companyId),
                 tomorrow: 0
             },
             mobile: {

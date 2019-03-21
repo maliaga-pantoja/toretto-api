@@ -1,6 +1,7 @@
 'use strict';
 
 module.exports = function(Report) {
+
     //** Get current day rides
     async function getTodayRides(companyId) {
         try {
@@ -59,7 +60,9 @@ module.exports = function(Report) {
                     date: tomorrow
                 }
             });
+
             return rides.length;
+
         } catch (e) {
             return e.message;
         }
@@ -91,13 +94,40 @@ module.exports = function(Report) {
     async function getTodaysFinishedDestinies(companyId) {
         try {
             const todayRides = await getTodaysFinishedRides(companyId);
-            let totalDestinies = 0;
+
+            let totalFinishedDestinies = 0;
 
             todayRides.forEach(ride => {
-                totalDestinies += ride.destinyIds.length;
+                totalFinishedDestinies += ride.destinyIds.length;
             });
 
-            return totalDestinies;
+            return totalFinishedDestinies;
+
+        } catch (e) {
+            return e.message;
+        }
+    }
+
+    //** Get total destinies from tomorrow  */
+    async function getTotalTomorrowDestinies(companyId) {
+        try {
+            const Destinies = Report.app.models.destinies
+
+            // Calculate tomorrow date
+            const tomorrow = new Date();
+            tomorrow.setDate(tomorrow.getDate() + 1);
+
+            const destinies = await Destinies.find({
+                where: {
+                    date: tomorrow
+                }
+            });
+
+            destinies = companyId ?
+                destinies.filter(d => String(d.companyId) === companyId) :
+                destinies;
+
+            return destinies.length;
 
         } catch (e) {
             return e.message;
@@ -114,7 +144,7 @@ module.exports = function(Report) {
             destinies: {
                 today: await getTotalTodayDestinies(companyId),
                 finishedToday: await getTodaysFinishedDestinies(companyId),
-                tomorrow: 0
+                tomorrow: await getTotalTomorrowDestinies(companyId)
             },
             mobile: {
                 base: 0,

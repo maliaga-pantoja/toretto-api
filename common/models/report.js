@@ -3,7 +3,7 @@
 module.exports = function(Report) {
 
     //** Get current day rides
-    async function getTodayRides(companyId) {
+    async function getTotalTodayRides(companyId) {
         try {
             const Rides = Report.app.models.ride;
 
@@ -25,7 +25,7 @@ module.exports = function(Report) {
     }
 
     //** Get finished rides from current day
-    async function getTodaysFinishedRides(companyId) {
+    async function getTotalTodaysFinishedRides(companyId) {
         try {
             const Rides = Report.app.models.ride;
 
@@ -52,7 +52,7 @@ module.exports = function(Report) {
     }
 
     //** Get tomorrow rides
-    async function getTomorrowRides(companyId) {
+    async function getTotalTomorrowRides(companyId) {
         try {
             const Rides = Report.app.models.ride;
 
@@ -102,7 +102,7 @@ module.exports = function(Report) {
     //** Get finished destinies from current day
     async function getTodaysFinishedDestinies(companyId) {
         try {
-            const todayRides = await getTodaysFinishedRides(companyId);
+            const todayRides = await getTotalTodaysFinishedRides(companyId);
 
             let totalTodayFinishedDestinies = 0;
 
@@ -147,12 +147,102 @@ module.exports = function(Report) {
         }
     }
 
+    //** Get total fixed rides from current day*/
+    async function getTotalFixedRides(companyId, type) {
+        try {
+            const Rides = Report.app.models.ride;
+
+            let rides = await Rides.find({
+                where: {
+                    date: new Date(),
+                    type: type
+                }
+            });
+
+            rides = companyId ?
+                rides.filter(r => String(r.companyId) === companyId) :
+                rides;
+
+            return rides.length;
+
+        } catch (e) {
+            return e.message;
+        }
+    }
+
+    //** Get total fixed rides from tomorrow*/
+    async function getTotalTomorrowFixedRides(companyId, type) {
+        try {
+            const Rides = Report.app.models.ride;
+
+            // Calculate tomorrow date
+            const tomorrow = new Date();
+            tomorrow.setDate(tomorrow.getDate() + 1);
+
+            let rides = await Rides.find({
+                where: {
+                    date: tomorrow,
+                    type: type
+                }
+            });
+
+            rides = companyId ?
+                rides.filter(r => String(r.companyId) === companyId) :
+                rides;
+
+            return rides.length;
+
+        } catch (e) {
+            return e.message;
+        }
+    }
+
+    //** Get total passengers from current day */
+    async function getTotalPassengers(companyId) {
+        try {
+            const todayRides = await getTotalTodayRides(companyId);
+
+            todayRides = companyId ?
+                todayRides.filter(r => String(r.companyId) === companyId) :
+                todayRides;
+
+            const passengers = todayRides.filter((ride, i) => names.passengerId.indexOf(ride) === i)
+
+            const uniquePassengerId = [...new Set(passengers.map(passenger => passenger.passengerId))];
+
+            return uniquePassengerId.length;
+
+        } catch (e) {
+            return e.message;
+        }
+    }
+
+    //** Get total passengers from tomorrow */
+    async function getTotalTomorrowPassengers(companyId) {
+        try {
+            const todayRides = await getTotalTomorrowRides(companyId);
+
+            todayRides = companyId ?
+                todayRides.filter(r => String(r.companyId) === companyId) :
+                todayRides;
+
+            const passengers = todayRides.filter((ride, i) => names.passengerId.indexOf(ride) === i)
+
+            const uniquePassengerId = [...new Set(passengers.map(passenger => passenger.passengerId))];
+
+            return uniquePassengerId.length;
+
+        } catch (e) {
+            return e.message;
+        }
+    }
+
     Report.getDashboard = async companyId => {
         return {
             rides: {
-                today: await getTodayRides(companyId),
-                finishedToday: await getTodaysFinishedRides(companyId),
-                tomorrow: await getTomorrowRides(companyId)
+                today: await getTotalTodayRides(companyId),
+                finishedToday: await getTotalTodaysFinishedRides(companyId),
+                tomorrow: await getTotalTomorrowRides(companyId)
             },
             destinies: {
                 today: await getTotalTodayDestinies(companyId),
@@ -160,15 +250,15 @@ module.exports = function(Report) {
                 tomorrow: await getTotalTomorrowDestinies(companyId)
             },
             mobile: {
-                base: 0,
-                additional: 0,
-                baseTomorrow: 0,
-                additionalTomorrow: 0
+                fixed: await getTotalFixedRides(companyId, 'fijo'),
+                additional: await getTotalFixedRides(companyId, 'adicional'),
+                baseTomorrow: await getTotalTomorrowFixedRides(companyId, 'fijo'),
+                additionalTomorrow: await getTotalTomorrowFixedRides(companyId, 'adicional'),
             },
             passengers: {
-                today: 0,
-                onBoard: 0,
-                tomorrow: 0
+                today: await getTotalPassengers(companyId),
+                onBoard: await getTotalTomorrowPassengers(companyId),
+                tomorrow: await getTotalTomorrowPassengers(companyId)
             }
         };
     };

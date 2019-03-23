@@ -237,6 +237,24 @@ module.exports = function(Report) {
         }
     }
 
+    //** Get total onboard passengers*/
+    async function getTotalOnboardPassengers(companyId) {
+        try {
+            const todayRides = await getTotalTodayRides(companyId);
+
+            todayRides = companyId ?
+                todayRides.filter(r => String(r.companyId) === companyId) :
+                todayRides;
+
+            activeRides = todayRides.filter(r => r.status === 1);
+
+            return activeRides.length;
+
+        } catch (e) {
+            return e.message
+        }
+    }
+
     Report.getDashboard = async companyId => {
         return {
             rides: {
@@ -257,7 +275,7 @@ module.exports = function(Report) {
             },
             passengers: {
                 today: await getTotalPassengers(companyId),
-                onBoard: await getTotalTomorrowPassengers(companyId),
+                onBoard: await getTotalOnboardPassengers(companyId),
                 tomorrow: await getTotalTomorrowPassengers(companyId)
             }
         };

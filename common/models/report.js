@@ -254,7 +254,7 @@ module.exports = function(Report) {
     });
 };
 
-// helper function for get proper date
+// Helper function for get proper date
 function getDate(type) {
     const start = new Date();
     start.setHours(0, 0, 0, 0);

@@ -148,20 +148,11 @@ module.exports = function(Report) {
     //** Get total fixed rides from current day*/
     async function getTotalFixedRides(companyId, type) {
         try {
-            const Rides = Report.app.models.ride;
+            const today = await getTotalTodayRides(companyId);
 
-            let rides = await Rides.find({
-                where: {
-                    date: new Date(),
-                    type: type
-                }
-            });
+            const fixedRides = today.rides.filter(ride => ride.type === type);
 
-            rides = companyId ?
-                rides.filter(r => String(r.companyId) === companyId) :
-                rides;
-
-            return rides.length;
+            return fixedRides.length;
 
         } catch (e) {
             return e.message;
@@ -256,9 +247,9 @@ module.exports = function(Report) {
     Report.getDashboard = async companyId => {
         return {
             rides: {
-                today: await getTotalTodayRides(companyId),
-                finishedToday: await getTotalTodaysFinishedRides(companyId),
-                tomorrow: await getTotalTomorrowRides(companyId)
+                today: (await getTotalTodayRides(companyId)).total,
+                finishedToday: (await getTotalTodaysFinishedRides(companyId)).total,
+                tomorrow: (await getTotalTomorrowRides(companyId)).total
             },
             destinies: {
                 today: await getTotalTodayDestinies(companyId),

@@ -162,24 +162,11 @@ module.exports = function(Report) {
     //** Get total fixed rides from tomorrow*/
     async function getTotalTomorrowFixedRides(companyId, type) {
         try {
-            const Rides = Report.app.models.ride;
+            const today = await getTotalTomorrowRides(companyId);
 
-            // Calculate tomorrow date
-            const tomorrow = new Date();
-            tomorrow.setDate(tomorrow.getDate() + 1);
+            const fixedRides = today.rides.filter(ride => ride.type === type);
 
-            let rides = await Rides.find({
-                where: {
-                    date: tomorrow,
-                    type: type
-                }
-            });
-
-            rides = companyId ?
-                rides.filter(r => String(r.companyId) === companyId) :
-                rides;
-
-            return rides.length;
+            return fixedRides.length;
 
         } catch (e) {
             return e.message;

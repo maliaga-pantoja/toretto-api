@@ -176,17 +176,8 @@ module.exports = function(Report) {
     //** Get total passengers from current day */
     async function getTotalPassengers(companyId) {
         try {
-            const todayRides = await getTotalTodayRides(companyId);
-
-            todayRides = companyId ?
-                todayRides.filter(r => String(r.companyId) === companyId) :
-                todayRides;
-
-            const passengers = todayRides.filter((ride, i) => names.passengerId.indexOf(ride) === i)
-
-            const uniquePassengerId = [...new Set(passengers.map(passenger => passenger.passengerId))];
-
-            return uniquePassengerId.length;
+            const today = await getTotalTodayRides(companyId);
+            return today.total;
 
         } catch (e) {
             return e.message;
@@ -196,17 +187,8 @@ module.exports = function(Report) {
     //** Get total passengers from tomorrow */
     async function getTotalTomorrowPassengers(companyId) {
         try {
-            const todayRides = await getTotalTomorrowRides(companyId);
-
-            todayRides = companyId ?
-                todayRides.filter(r => String(r.companyId) === companyId) :
-                todayRides;
-
-            const passengers = todayRides.filter((ride, i) => names.passengerId.indexOf(ride) === i)
-
-            const uniquePassengerId = [...new Set(passengers.map(passenger => passenger.passengerId))];
-
-            return uniquePassengerId.length;
+            const today = await getTotalTomorrowRides(companyId);
+            return today.total;
 
         } catch (e) {
             return e.message;
@@ -216,13 +198,9 @@ module.exports = function(Report) {
     //** Get total onboard passengers*/
     async function getTotalOnboardPassengers(companyId) {
         try {
-            const todayRides = await getTotalTodayRides(companyId);
+            const today = await getTotalTodayRides(companyId);
 
-            todayRides = companyId ?
-                todayRides.filter(r => String(r.companyId) === companyId) :
-                todayRides;
-
-            activeRides = todayRides.filter(r => r.status === 1);
+            const activeRides = today.rides.filter(r => r.status === '1');
 
             return activeRides.length;
 

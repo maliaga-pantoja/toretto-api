@@ -6,10 +6,14 @@ module.exports = function(Report) {
     async function getTotalTodayRides(companyId) {
         try {
             const Rides = Report.app.models.ride;
+            const start = getDate('start')
+            const end = getDate('end')
 
             let rides = await Rides.find({
                 where: {
-                    date: new Date()
+                    date: {
+                        between: [start, end]
+                    }
                 }
             });
 
@@ -28,11 +32,15 @@ module.exports = function(Report) {
     async function getTotalTodaysFinishedRides(companyId) {
         try {
             const Rides = Report.app.models.ride;
+            const start = getDate('start')
+            const end = getDate('end')
 
-            const rides = await Rides.find({
+            let rides = await Rides.find({
                 where: {
                     and: [{
-                            date: new Date()
+                            date: {
+                                between: [start, end]
+                            }
                         },
                         {
                             status: '2'
@@ -55,14 +63,14 @@ module.exports = function(Report) {
     async function getTotalTomorrowRides(companyId) {
         try {
             const Rides = Report.app.models.ride;
+            const start = getDate('startTomorrow')
+            const end = getDate('endTomorrow')
 
-            // Calculate tomorrow date
-            const tomorrow = new Date();
-            tomorrow.setDate(tomorrow.getDate() + 1);
-
-            const rides = await Rides.find({
+            let rides = await Rides.find({
                 where: {
-                    date: tomorrow
+                    date: {
+                        between: [start, end]
+                    }
                 }
             });
 
@@ -299,3 +307,30 @@ module.exports = function(Report) {
         }
     });
 };
+
+// helper function for get proper date
+function getDate(type) {
+    const start = new Date();
+    start.setHours(0, 0, 0, 0);
+
+    const end = new Date();
+    end.setHours(23, 59, 59, 999);
+
+    switch (type) {
+        case 'start':
+            return start;
+            break;
+
+        case 'end':
+            return end;
+            break;
+
+        case 'startTomorrow':
+            return start.setDate(start.getDate() + 1);
+            break;
+
+        case 'endTomorrow':
+            return end.setDate(end.getDate() + 1);
+            break;
+    }
+}

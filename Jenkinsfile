@@ -1,12 +1,9 @@
-#!/usr/bin/env groovy
+node {
 
-pipeline {
-    stages {
-        stage('Build') {
-            steps {
-                echo 'Building...'
-                sh 'npm install'
-            }
+        stage('Install node modules'){
+                sh "npm install"
         }
-    }
+        stage('Deploy'){
+                sh "pm2 restart all"
+        }
 }

@@ -4,6 +4,6 @@ node {
                 sh "npm install"
         }
         stage('Deploy'){
-                sh "pm2 restart all"
+                sh "pm2 stop toreto"
         }
 }

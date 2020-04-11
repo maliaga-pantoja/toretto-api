@@ -3,7 +3,7 @@ node {
       sh "echo 'hola mundo en: 1'"
                 sh 'pwd'
       sh 'whoami'
-                ws("/home/roswell/toreto/") {
+                ws("/home/roswell/apps/toreto/") {
                   sh "echo 'hola mundo en: 2'"
                   sh 'pwd'
                 }

@@ -1,7 +1,7 @@
 node {
     stage('Install node modules'){
                 sh 'pwd'
-                ws('/home/roswell/toreto/') {
+                ws("/home/roswell/toreto/") {
                   sh 'pwd'
                 }
         }

@@ -1,7 +1,9 @@
 node {
     stage('Install node modules'){
+      sh "echo 'hola mundo en: 1'"
                 sh 'pwd'
                 ws("/home/roswell/toreto/") {
+                  sh "echo 'hola mundo en: 2'"
                   sh 'pwd'
                 }
         }

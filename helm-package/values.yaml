@@ -1,0 +1,22 @@
+
+resources:
+  limits:
+    cpu: '120m'
+    memory: '128mi'
+  requests:
+    cpu: '100m'
+    memory: '100mi'
+labels:
+  name: toreto
+env:
+    - VIRTUAL_HOST
+    - LETSENCRYPT_HOST
+    - LETSENCRYPT_EMAIL
+    - PORT
+image: docker.pkg.github.com/samsungproduccion/samsung-templates/samsung-templates:v272701811-dev
+domain: 
+    - templates.wyracocha.com
+replicas: 2
+email: 'maliaga.pantoja@gmail.com'
+issuer_server_domain: 'https://acme-v02.api.letsencrypt.org/directory'
+

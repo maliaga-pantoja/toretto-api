@@ -6,8 +6,9 @@
     "node": ">=4"
   },
   "scripts": {
+    "postinstall": "npm start",
     "lint": "eslint .",
-    "start": "node .",
+    "start": "node src/server/server.js",
     "posttest": "npm run lint"
   },
   "dependencies": {

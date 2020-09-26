@@ -1,0 +1,42 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ .Release.Name}}-deployment
+  labels:
+  {{- range $key, $value := .Values.labels }}
+    {{ $key }}: {{ $value }}
+  {{- end }}
+spec:
+  replicas: {{ .Values.replicas}}
+  selector:
+    matchLabels:
+    {{- range $key, $value := .Values.labels }}
+      {{ $key }}: {{ $value }}
+    {{- end }}
+  template:
+    metadata:
+      labels:
+      {{- range $key, $value := .Values.labels }}
+        {{ $key }}: {{ $value }}
+      {{- end }}
+    spec:
+      containers:
+      - env:
+        {{ $rn := .Release.Name }}
+        {{- range $index,$value := .Values.env }}
+        - name: {{ . }}
+          valueFrom:
+            secretKeyRef:
+              key: {{ . }}
+              name: {{ $rn }}-app-secrets
+        {{- end }}
+        image: {{ .Values.image }}
+        imagePullPolicy: Always
+        name: site-pod
+        ports:
+        - containerPort: 80
+          protocol: TCP
+      imagePullSecrets:
+      - name: {{ .Release.Name }}-github-registry
+      restartPolicy: Always
+      terminationGracePeriodSeconds: 30

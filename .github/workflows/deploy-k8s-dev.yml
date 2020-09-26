@@ -1,0 +1,53 @@
+name: Deploy k8s Dev
+
+on:
+  push:
+    branches:
+      - develop
+env:
+  # TODO: Change variable to your image's name.
+  IMAGE_NAME: toreto-api
+jobs:
+  push:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Build image
+        run: docker build . --file Dockerfile --tag $IMAGE_NAME
+      - name: Log into registry
+        run: echo "${{ secrets.GITHUB_TOKEN }}" | docker login docker.pkg.github.com -u ${{ github.actor }} --password-stdin
+      - name: Push image
+        run: |
+          IMAGE_ID=docker.pkg.github.com/${{ github.repository }}/$IMAGE_NAME
+          docker tag $IMAGE_NAME $IMAGE_ID:v${{ github.run_id }}-dev
+          docker push $IMAGE_ID:v${{ github.run_id }}-dev
+      - name: Update values
+        run: |
+          IMAGE_ID=docker.pkg.github.com/${{ github.repository }}/$IMAGE_NAME
+          IMAGE_BUID=$IMAGE_ID:v${{ github.run_id }}-dev
+          echo "
+          resources:
+            limits:
+              cpu: '120m'
+              memory: '128mi'
+            requests:
+              cpu: '100m'
+              memory: '100mi'
+          labels:
+            name: templates
+          env:
+              - VIRTUAL_HOST
+              - LETSENCRYPT_HOST
+              - LETSENCRYPT_EMAIL
+              - PORT
+          image: $IMAGE_BUID
+          domain: 
+              - templates.samsung.com.pe
+          replicas: 2
+          email: 'maliaga.pantoja@gmail.com'
+          issuer_server_domain: 'https://acme-v02.api.letsencrypt.org/directory'
+          " > helm-package/values.yaml
+      - name: Commit changes
+        uses: stefanzweifel/git-auto-commit-action@v4
+        with:
+          commit_message: "commiting values"

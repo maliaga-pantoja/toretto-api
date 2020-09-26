@@ -1,0 +1,24 @@
+apiVersion: networking.k8s.io/v1beta1
+kind: Ingress
+metadata:
+  name: {{ .Release.Name }}-ingress
+  annotations:
+    kubernetes.io/ingress.class: nginx
+    cert-manager.io/cluster-issuer: {{ .Release.Name }}-issuer
+spec:
+  tls:
+    - hosts:
+      {{- range $index,$value := .Values.domain  }}
+        - {{ $value }}
+      {{- end}}
+      secretName: {{ .Release.Name }}-tls
+  rules:
+  {{ $svcName := .Release.Name }}
+  {{- range $index,$value := .Values.domain  }}
+    - host: {{ $value }}
+      http:
+        paths:
+        - backend:
+            serviceName: {{ $svcName }}-svc
+            servicePort: 80
+  {{- end }}

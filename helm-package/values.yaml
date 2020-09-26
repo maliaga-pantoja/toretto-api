@@ -15,7 +15,7 @@ env:
     - PORT
 image: docker.pkg.github.com/giacomo1203/toretto-api/toreto-api:v274171676-dev
 domain: 
-    - demo-template.wyracocha.com
+    - toreto-api.wyracocha.com
 replicas: 2
 email: 'maliaga.pantoja@gmail.com'
 issuer_server_domain: 'https://acme-v02.api.letsencrypt.org/directory'

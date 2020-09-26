@@ -7,15 +7,15 @@ resources:
     cpu: '100m'
     memory: '100mi'
 labels:
-  name: toreto
+  name: templates
 env:
     - VIRTUAL_HOST
     - LETSENCRYPT_HOST
     - LETSENCRYPT_EMAIL
     - PORT
-image: docker.pkg.github.com/samsungproduccion/samsung-templates/samsung-templates:v272701811-dev
+image: docker.pkg.github.com/giacomo1203/toretto-api/toreto-api:v274104016-dev
 domain: 
-    - templates.wyracocha.com
+    - templates.samsung.com.pe
 replicas: 2
 email: 'maliaga.pantoja@gmail.com'
 issuer_server_domain: 'https://acme-v02.api.letsencrypt.org/directory'

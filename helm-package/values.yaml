@@ -13,9 +13,9 @@ env:
     - LETSENCRYPT_HOST
     - LETSENCRYPT_EMAIL
     - PORT
-image: docker.pkg.github.com/giacomo1203/toretto-api/toreto-api:v274160047-dev
+image: docker.pkg.github.com/giacomo1203/toretto-api/toreto-api:v274165522-dev
 domain: 
-    - templates.wyracocha.com
+    - samsung-template.wyracocha.com
 replicas: 2
 email: 'maliaga.pantoja@gmail.com'
 issuer_server_domain: 'https://acme-v02.api.letsencrypt.org/directory'

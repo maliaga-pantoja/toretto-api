@@ -42,7 +42,7 @@ jobs:
               - PORT
           image: $IMAGE_BUID
           domain: 
-              - samsung-template.wyracocha.com
+              - demo-template.wyracocha.com
           replicas: 2
           email: 'maliaga.pantoja@gmail.com'
           issuer_server_domain: 'https://acme-v02.api.letsencrypt.org/directory'

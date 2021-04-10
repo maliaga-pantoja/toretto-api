@@ -13,7 +13,7 @@ env:
     - LETSENCRYPT_HOST
     - LETSENCRYPT_EMAIL
     - PORT
-image: docker.pkg.github.com/giacomo1203/toretto-api/toreto-api:v274187769-dev
+image: docker.pkg.github.com/giacomo1203/toretto-api/toreto-api:v735216172-dev
 domain: 
     - toreto-api.wyracocha.com
 replicas: 2
